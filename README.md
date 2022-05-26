@@ -1,11 +1,10 @@
 # Inscryptr - Share your favorite cards from the hit indie title, Inscryption
----
 *by Allen Faughn*
 # Table of Contents
----
+- [Description](https://github.com/aFaughn/Inscryptr/#Description)
+- [Technologies](https://github.com/aFaughn/Inscryptr/#Technologies)
 # Description 
----
-> Inscryptr is a clone of Flickr, but instead of photos, albums, and users, we have Scribes, Tribes, and Cards.
+ Inscryptr is a clone of Flickr, but instead of photos, albums, and users, we have Scribes, Tribes, and Cards.
 
 
 ## Technologies
