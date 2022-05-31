@@ -1,43 +1,26 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "js-cookie": "^3.0.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-redux": "^7.2.8",
-    "react-router-dom": "^5.3.3",
-    "react-scripts": "5.0.1",
-    "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
-  },
+  "name": "inscryptr",
+  "version": "1.0.0",
+  "description": "*by Allen Faughn* # Table of Contents - [Description](https://github.com/aFaughn/Inscryptr/#Description) - [Technologies](https://github.com/aFaughn/Inscryptr/#Technologies) # Description   Inscryptr is a clone of Flickr, but instead of photos, albums, and users, we have Scribes, Tribes, and Cards.",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "heroku-postbuild": "npm run build --prefix frontend",
+    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "dev:backend": "npm install --prefix backend start",
+    "dev:frontend": "npm install --prefix frontend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aFaughn/aA-Solo-Proj-placeholder-name.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aFaughn/aA-Solo-Proj-placeholder-name/issues"
   },
-  "devDependencies": {
-    "redux-logger": "^3.0.6"
-  },
-  "proxy":"http://localhost:5000"
+  "homepage": "https://github.com/aFaughn/aA-Solo-Proj-placeholder-name#readme"
 }
