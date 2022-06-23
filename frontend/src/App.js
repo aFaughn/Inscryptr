@@ -28,6 +28,10 @@ function App() {
           <Route path='/'>
             <SplashPage/>
           </Route>
+          {/* View All Cards */}
+          <Route path='/cards'>
+
+          </Route>
         </Switch>
       )}
     </>
