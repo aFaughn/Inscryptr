@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from './components/SplashPage';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Cards from './components/Cards';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,10 +28,10 @@ function App() {
           </Route>
           <Route path='/'>
             <SplashPage/>
+            <Cards/>
           </Route>
           {/* View All Cards */}
           <Route path='/cards'>
-
           </Route>
         </Switch>
       )}
