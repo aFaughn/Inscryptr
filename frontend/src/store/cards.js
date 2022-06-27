@@ -1,20 +1,90 @@
-const LOAD = 'cards/LOAD'
-const DELETE = 'cards/DELETE'
-const EDIT = 'cards/EDIT'
-const CREATE = 'cards/CREATE'
+import {csrfFetch } from './csrf';
 
-const load = (card) => {
+const LOAD_CARD = 'cards/loadCard'
+const DELETE_CARD = 'cards/deleteCard'
+const EDIT_CARD = 'cards/editCard'
+const CREATE_CARD = 'cards/createCard'
+
+const loadAllCards = (cards) => {
     return {
         type: LOAD_CARD,
+        cards
+    }
+}
+
+const createCard = (card) => {
+    return {
+        type: CREATE_CARD,
         card
     }
 }
+
+const editCard = (card) => {
+    return {
+        type: EDIT_CARD,
+        card
+    }
+}
+
+const deleteCard = (card) => {
+    return {
+        type: DELETE_CARD,
+        card
+    }
+}
+
 
 export const getAllCards = () => async (dispatch) => {
     const response = await fetch(`/api/cards`)
 
     if (response.ok) {
         const cards = await response.json();
-        dispatch(load(cards))
+        dispatch(loadAllCards(cards))
+        return response;
+    } else {
+        return await response.json()
     }
 }
+
+// export const createNewCard = () => async (dispatch) => {
+//     const response = await fetch(`/api/cards`)
+
+//     if (response.ok) {
+//         const cards = await response.json();
+//         dispatch(loadCards(cards))
+//     }
+// }
+// export const editCard = () => async (dispatch) => {
+//     const response = await fetch(`/api/cards`)
+
+//     if (response.ok) {
+//         const cards = await response.json();
+//         dispatch(loadCards(cards))
+//     }
+// }
+// export const deleteCard = () => async (dispatch) => {
+//     const response = await fetch(`/api/cards`)
+
+//     if (response.ok) {
+//         const cards = await response.json();
+//         dispatch(loadCards(cards))
+//     }
+// }
+
+// Reducer
+
+const InitialState = {
+    cards: []
+}
+
+const cardReducer = (state = InitialState, action) => {
+    switch (action.type) {
+        case LOAD_CARD: return {
+        ...state, cards: [...action.cards]
+        }
+        default:
+            return state;
+    }
+}
+
+export default cardReducer;

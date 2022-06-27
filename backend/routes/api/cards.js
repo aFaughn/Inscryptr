@@ -7,8 +7,10 @@ const { Card } = require('../../db/models')
 
 //Get All Cards in the DB
 router.get('/', asyncHandler(async(req,res) => {
-        const cards = await Card.findAll();
-        return res.json({cards})
+        const cards = await Card.findAll({
+            order: [ ['name', 'DESC' ]]
+        });
+        return res.json(cards)
     })
 )
 

@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {useEffect} from 'react';
+import {getAllCards} from '../../store/cards';
 
 const Cards = () => {
     //What needs to happen here:
@@ -12,14 +13,27 @@ const Cards = () => {
 
     //TODO: useSelector to access state and map each card out to a div.
     const dispatch = useDispatch();
+    // const cardSelector = useSelector(state => state.cards)
+    const cards = useSelector(state=>state.cards.cards);
+    console.log(cards);
 
-
+    useEffect(() => {
+        dispatch(getAllCards())
+    },[dispatch])
 
     return (
         <div>
             <div className='Cards-Container'>
-
+                <h1>Hello from Cards</h1>
+                {cards.map((card) => (
+                    <div key={card.id}>
+                        {`${card.name}, ${card.cost} ${card.costType}`}
+                        <img src={card.imageUrl}></img>
+                    </div>
+                ))}
             </div>
         </div>
     )
 }
+
+export default Cards
