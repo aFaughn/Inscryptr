@@ -1,4 +1,4 @@
-# Inscryptr - Share your favorite cards from the hit indie title, Inscryption
+# Inscryptr - Share or create your favorite cards from the indie title, Inscryption
 *by Allen Faughn*
 # Table of Contents
 - [Description](https://github.com/aFaughn/Inscryptr/#Description)
