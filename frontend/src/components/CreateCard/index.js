@@ -1,8 +1,12 @@
 import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {createNewCard} from '../../store/cards';
 
 const CreateCard = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.session.user.id)
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
@@ -31,9 +35,33 @@ const CreateCard = () => {
     }, [name, cost, description])
 
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        return null;
+        /*
+        What needs to happen to go further:
+
+        - Assign all values from the form to a variable and send it
+          to the DB through a thunk
+        - Thunk needs to send a POST to /api/cards
+        - Route needs to handle data being sent
+        - Redirect the user to the /cards page.
+        */
+
+        const payload = {
+            userId,
+            name,
+            cost,
+            costType,
+            tribe,
+            image,
+            description
+        }
+        console.log(payload);
+
+        let createdCard = await dispatch(createNewCard(payload));
+        if (createdCard) {
+            history.push(`/cards`)
+        }
     }
 
     return (
@@ -47,6 +75,7 @@ const CreateCard = () => {
                     <li key={error}>{error}</li>
                 ))}
             </ul>
+            <input type='hidden' name='_csrf'></input>
             <label>Enter a name</label>
             <input
             type='text'
