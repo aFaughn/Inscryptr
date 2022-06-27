@@ -25,6 +25,12 @@ const Cards = () => {
         <div>
             <div className='Cards-Container'>
                 <h1>Hello from Cards</h1>
+                {cards.map((card) => (
+                    <div key={card.id}>
+                        {`${card.name}, ${card.cost} ${card.costType}`}
+                        <img src={card.imageUrl}></img>
+                    </div>
+                ))}
             </div>
         </div>
     )

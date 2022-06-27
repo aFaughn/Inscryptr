@@ -74,7 +74,7 @@ export const getAllCards = () => async (dispatch) => {
 // Reducer
 
 const InitialState = {
-    cards: getAllCards()
+    cards: []
 }
 
 const cardReducer = (state = InitialState, action) => {
