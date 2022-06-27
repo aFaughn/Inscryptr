@@ -16,7 +16,7 @@ router.use('/cards', cardsRouter);
 router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
   const user = await User.findOne({
       where: {
-        username: 'Demo-lition'
+        username: 'Leshy'
       }
     });
   setTokenCookie(res, user);

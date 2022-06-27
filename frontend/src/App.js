@@ -7,6 +7,7 @@ import SplashPage from './components/SplashPage';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Cards from './components/Cards';
+import CreateCard from './components/CreateCard';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,12 +27,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/'>
+          <Route path='/' exact>
             <SplashPage/>
+          </Route>
+          <Route path='/cards' exact>
             <Cards/>
           </Route>
-          {/* View All Cards */}
-          <Route path='/cards'>
+          <Route path='/cards/new' exact>
+            <CreateCard/>
+          </Route>
+          <Route>
+            <h1>404: Your Stoat is in another castle</h1>
           </Route>
         </Switch>
       )}

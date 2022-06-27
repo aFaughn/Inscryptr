@@ -46,14 +46,20 @@ export const getAllCards = () => async (dispatch) => {
     }
 }
 
-// export const createNewCard = () => async (dispatch) => {
-//     const response = await fetch(`/api/cards`)
+export const createNewCard = (card) => async (dispatch) => {
+    const response = await fetch(`/api/cards`, {
+        method: 'POST',
+        headers: {"Content-Type": 'application/json'},
+        body: JSON.stringify(card)
+    })
 
-//     if (response.ok) {
-//         const cards = await response.json();
-//         dispatch(loadCards(cards))
-//     }
-// }
+    if (response.ok) {
+        const cards = await response.json();
+        await dispatch(createCard(card))
+        return cards;
+    }
+}
+
 // export const editCard = () => async (dispatch) => {
 //     const response = await fetch(`/api/cards`)
 
@@ -81,6 +87,9 @@ const cardReducer = (state = InitialState, action) => {
     switch (action.type) {
         case LOAD_CARD: return {
         ...state, cards: [...action.cards]
+        }
+        case CREATE_CARD: return {
+            ...state, cards: [...action.cards]
         }
         default:
             return state;

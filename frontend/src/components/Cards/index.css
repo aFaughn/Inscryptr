@@ -1,0 +1,19 @@
+.create-new-card {
+    font-size: 1000%;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 190px;
+    height: 300px;
+}
+.card {
+    width: 190px;
+    height: 300px;
+}
+.cards-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.edit {
+    margin-top: -20px;
+    z-index: 10;
+}
