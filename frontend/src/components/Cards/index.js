@@ -14,7 +14,8 @@ const Cards = () => {
     //TODO: useSelector to access state and map each card out to a div.
     const dispatch = useDispatch();
     // const cardSelector = useSelector(state => state.cards)
-    const cards = useSelector(state=>console.log('state',state));
+    const cards = useSelector(state=>state.cards.cards);
+    console.log(cards);
 
     useEffect(() => {
         dispatch(getAllCards())
