@@ -6,7 +6,7 @@ import cardReducer from './cards';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  cardReducer,
+  cards: cardReducer,
 });
 
 let enhancer;

@@ -74,18 +74,17 @@ export const getAllCards = () => async (dispatch) => {
 // Reducer
 
 const InitialState = {
-    cards: {}
+    cards: getAllCards()
 }
 
-const cardReducer = (state = {}, action) => {
-    let newState = {...state}
-        action.cards.forEach(card => {
-            console.log(card);
-        })
-            // action.cards.forEach(card => {
-            //     newState.cards = card.id
-            // })
-    return newState;
+const cardReducer = (state = InitialState, action) => {
+    switch (action.type) {
+        case LOAD_CARD: return {
+        ...state, cards: [...action.cards]
+        }
+        default:
+            return state;
+    }
 }
 
 export default cardReducer;
