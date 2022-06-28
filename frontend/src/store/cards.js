@@ -47,7 +47,7 @@ export const getAllCards = () => async (dispatch) => {
 }
 
 export const createNewCard = (card) => async (dispatch) => {
-    const response = await window.csrfFetch(`/api/cards`, {
+    const response = await csrfFetch(`/api/cards`, {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify(card)

@@ -15,13 +15,12 @@ router.get('/', asyncHandler(async(req,res) => {
     })
 )
 
+//create a new card
 router.post('/cards', asyncHandler(async(req,res) => {
     /*
         Destructure payload
         use Card.create to create new card
     */
-   res.cookie('XSRF-TOKEN', req.csrfToken());
-   await setTokenCookie(res, user)
     const {
         userId,
         name,
@@ -39,8 +38,9 @@ router.post('/cards', asyncHandler(async(req,res) => {
         image,
         cost,
         costType,
-        description
+        descriptions
     })
+    return res.json(card);
 }))
 
 module.exports = router;
