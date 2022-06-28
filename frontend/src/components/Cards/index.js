@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {useEffect} from 'react';
-import {getAllCards} from '../../store/cards';
+import {getAllCards, deleteOneCard} from '../../store/cards';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -22,6 +22,10 @@ const Cards = () => {
         dispatch(getAllCards())
     },[dispatch])
 
+    const handleDeleteClick = () => {
+        dispatch(deleteOneCard(cardId))
+    }
+
     return (
         <div>
             <div className='Cards-Container'>
@@ -33,6 +37,7 @@ const Cards = () => {
                         {`${card.name}, ${card.cost} ${card.costType}`}
                         <img src={card.imageUrl}></img>
                         <div className='edit'><Link to={`/cards/${card.id}`}>Edit</Link></div>
+                        <div className='delete'><button onClick={handleDeleteClick(card.id)}>X</button></div>
                     </div>
                 ))}
                 </div>

@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Cards from './components/Cards';
 import CreateCard from './components/CreateCard';
+import DeleteCard from './components/DeleteCard';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path='/cards/new' exact>
             <CreateCard/>
+          </Route>
+          <Route path='/cards/:cardId/delete' exact>
+            <DeleteCard/>
           </Route>
           <Route>
             <h1>404: Your Stoat is in another castle</h1>

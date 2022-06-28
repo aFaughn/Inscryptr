@@ -52,12 +52,6 @@ export const createNewCard = (card) => async (dispatch) => {
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify(card)
     })
-
-    // window.csrfFetch('/api/test', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-    //   }).then(res => res.json()).then(data => console.log(data));
-
     if (response.ok) {
         const cards = await response.json();
         await dispatch(createCard(card))
@@ -73,14 +67,14 @@ export const createNewCard = (card) => async (dispatch) => {
 //         dispatch(loadCards(cards))
 //     }
 // }
-// export const deleteCard = () => async (dispatch) => {
-//     const response = await fetch(`/api/cards`)
+export const deleteOneCard = (card) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${card}/delete`)
 
-//     if (response.ok) {
-//         const cards = await response.json();
-//         dispatch(loadCards(cards))
-//     }
-// }
+    if (response.ok) {
+        const cards = await response.json();
+        dispatch(deleteCard(cards))
+    }
+}
 
 // Reducer
 
@@ -94,6 +88,9 @@ const cardReducer = (state = InitialState, action) => {
         ...state, cards: [...action.cards]
         }
         case CREATE_CARD: return {
+            ...state
+        }
+        case DELETE_CARD: return {
             ...state
         }
         default:
