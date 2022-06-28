@@ -47,11 +47,16 @@ export const getAllCards = () => async (dispatch) => {
 }
 
 export const createNewCard = (card) => async (dispatch) => {
-    const response = await fetch(`/api/cards`, {
+    const response = await window.csrfFetch(`/api/cards`, {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify(card)
     })
+
+    // window.csrfFetch('/api/test', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
+    //   }).then(res => res.json()).then(data => console.log(data));
 
     if (response.ok) {
         const cards = await response.json();

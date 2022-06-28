@@ -20,6 +20,7 @@ router.post('/cards', asyncHandler(async(req,res) => {
         Destructure payload
         use Card.create to create new card
     */
+   res.cookie('XSRF-TOKEN', req.csrfToken());
    await setTokenCookie(res, user)
     const {
         userId,
