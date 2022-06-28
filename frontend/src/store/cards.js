@@ -94,7 +94,7 @@ const cardReducer = (state = InitialState, action) => {
         ...state, cards: [...action.cards]
         }
         case CREATE_CARD: return {
-            ...state, cards: [...action.cards]
+            ...state
         }
         default:
             return state;

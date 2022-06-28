@@ -16,7 +16,7 @@ router.get('/', asyncHandler(async(req,res) => {
 )
 
 //create a new card
-router.post('/cards', asyncHandler(async(req,res) => {
+router.post('/', asyncHandler(async(req,res) => {
     /*
         Destructure payload
         use Card.create to create new card
@@ -30,16 +30,17 @@ router.post('/cards', asyncHandler(async(req,res) => {
         image,
         description
     } = req.body
-
+    console.log(`RECIEVED PAYLOAD: ${userId}, ${name}, ${cost}, ${costType}, ${tribe}, ${image}, ${description}`);
     const card = await Card.create({
-        userId,
-        name,
-        tribe,
-        image,
-        cost,
-        costType,
-        descriptions
+        userId: userId,
+        name: name,
+        tribeId: tribe,
+        imageUrl: image,
+        cost: cost,
+        costType: costType,
+        description: description
     })
+    console.log(card);
     return res.json(card);
 }))
 
