@@ -26,14 +26,30 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
 }))
 
 //Submit changes to card
-router.post('/"id(\\d+)'), asyncHandler(async(req,res) => {
+router.put('/:id(\\d+)', asyncHandler(async(req,res) => {
     const details = {
-        //CARD STATS
-    }
-    // UPDATE CARD
-    // RETURN OK
-    // REDIRECT TO /CARDS
-})
+        cost,
+        costType,
+        description,
+        id,
+        image,
+        name,
+        tribe,
+        userId
+    } = req.body
+
+    const card = await Card.findByPk(id);
+    await card.update({
+        userId: userId,
+        name: name,
+        tribeId: tribe,
+        imageUrl: image,
+        cost: cost,
+        costType: costType,
+        description: description
+    })
+    res.json({})
+}));
 
 
 //create a new card

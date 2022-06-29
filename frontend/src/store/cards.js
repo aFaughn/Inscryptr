@@ -79,14 +79,20 @@ export const createNewCard = (card) => async (dispatch) => {
     }
 }
 
-// export const editCard = () => async (dispatch) => {
-//     const response = await fetch(`/api/cards`)
+export const editOneCard = (card) => async (dispatch) => {
+    const response = await csrfFetch(`/api/cards/${card.id}`, {
+        method: 'PUT',
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(card)
+    })
 
-//     if (response.ok) {
-//         const cards = await response.json();
-//         dispatch(loadCards(cards))
-//     }
-// }
+    if (response.ok) {
+        const cards = await response.json();
+        dispatch(editCard(cards))
+        return card;
+    }
+}
+
 export const deleteOneCard = (card) => async (dispatch) => {
     const response = await csrfFetch(`/api/cards/${card}`, {
         method: 'DELETE',
@@ -95,8 +101,9 @@ export const deleteOneCard = (card) => async (dispatch) => {
     if (response.ok) {
         const cards = await response.json();
         dispatch(deleteCard())
+        console.log(cards);
     } else {
-        console.log(response)
+        console.log('Well ____ ... uh oh.')
     }
 }
 
@@ -119,6 +126,9 @@ const cardReducer = (state = InitialState, action) => {
         }
         case LOAD_ONE_CARD: return {
             ...state, cards: [...action.card]
+        }
+        case EDIT_CARD: return {
+            ...state
         }
         default:
             return state;
