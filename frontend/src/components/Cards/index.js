@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {getAllCards} from '../../store/cards';
 import { Link } from 'react-router-dom';
@@ -16,12 +16,9 @@ const Cards = () => {
     //TODO: useSelector to access state and map each card out to a div.
     const dispatch = useDispatch();
     const cards = useSelector(state=>state.cards.cards);
-    console.log(cards);
-
     useEffect(() => {
         dispatch(getAllCards())
     },[dispatch])
-
     return (
         <div>
             <div className='Cards-Container'>
@@ -31,7 +28,7 @@ const Cards = () => {
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
                         {`${card.name}, ${card.cost} ${card.costType}`}
-                        <img src={card.imageUrl}></img>
+                        <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' src={card.imageUrl}></img></Link>
                         <div className='edit'><Link to={`/cards/${card.id}`}>Edit</Link></div>
                     </div>
                 ))}
