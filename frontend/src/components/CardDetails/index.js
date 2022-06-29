@@ -15,8 +15,8 @@ const CardDetails = () => {
     },[dispatch, cardId])
 
     const handleClick = async () => {
-        dispatch(deleteOneCard(cardId));
-        history.push('/cards');
+        await dispatch(deleteOneCard(cardId));
+        setTimeout(history.push('/cards'), 1000);
     }
 
 

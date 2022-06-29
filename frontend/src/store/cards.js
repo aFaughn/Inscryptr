@@ -94,7 +94,7 @@ export const deleteOneCard = (card) => async (dispatch) => {
 
     if (response.ok) {
         const cards = await response.json();
-        dispatch(deleteCard(cards))
+        dispatch(deleteCard())
     } else {
         console.log(response)
     }
@@ -115,7 +115,7 @@ const cardReducer = (state = InitialState, action) => {
             ...state
         }
         case DELETE_CARD: return {
-            ...state
+            ...state,
         }
         case LOAD_ONE_CARD: return {
             ...state, cards: [...action.card]
