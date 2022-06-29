@@ -4,6 +4,7 @@ const LOAD_CARD = 'cards/loadCard'
 const DELETE_CARD = 'cards/deleteCard'
 const EDIT_CARD = 'cards/editCard'
 const CREATE_CARD = 'cards/createCard'
+const LOAD_ONE_CARD = 'cards/loadOneCard'
 
 const loadAllCards = (cards) => {
     return {
@@ -12,6 +13,12 @@ const loadAllCards = (cards) => {
     }
 }
 
+const loadOneCard = (card) => {
+    return {
+        type: LOAD_ONE_CARD,
+        card
+    }
+}
 const createCard = (card) => {
     return {
         type: CREATE_CARD,
@@ -46,6 +53,19 @@ export const getAllCards = () => async (dispatch) => {
     }
 }
 
+export const getOneCard = (card) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${card}`)
+
+    if (response.ok) {
+        const cards = await response.json();
+        dispatch(loadOneCard(cards))
+        return response;
+    } else {
+        return await response.json();
+    }
+}
+
+
 export const createNewCard = (card) => async (dispatch) => {
     const response = await csrfFetch(`/api/cards`, {
         method: 'POST',
@@ -68,11 +88,15 @@ export const createNewCard = (card) => async (dispatch) => {
 //     }
 // }
 export const deleteOneCard = (card) => async (dispatch) => {
-    const response = await fetch(`/api/cards/${card}/delete`)
+    const response = await csrfFetch(`/api/cards/${card}`, {
+        method: 'DELETE',
+    })
 
     if (response.ok) {
         const cards = await response.json();
         dispatch(deleteCard(cards))
+    } else {
+        console.log(response)
     }
 }
 
@@ -92,6 +116,9 @@ const cardReducer = (state = InitialState, action) => {
         }
         case DELETE_CARD: return {
             ...state
+        }
+        case LOAD_ONE_CARD: return {
+            ...state, cards: [...action.card]
         }
         default:
             return state;

@@ -15,6 +15,27 @@ router.get('/', asyncHandler(async(req,res) => {
     })
 )
 
+//Get Card Details
+router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
+    const card = await Card.findByPk(req.params.id);
+    const cardArr = [];
+    cardArr.push(card);
+    if (cardArr) {
+        return res.json(cardArr)
+    }
+}))
+
+//Submit changes to card
+router.post('/"id(\\d+)'), asyncHandler(async(req,res) => {
+    const details = {
+        //CARD STATS
+    }
+    // UPDATE CARD
+    // RETURN OK
+    // REDIRECT TO /CARDS
+})
+
+
 //create a new card
 router.post('/', asyncHandler(async(req,res) => {
     /*
@@ -30,7 +51,7 @@ router.post('/', asyncHandler(async(req,res) => {
         image,
         description
     } = req.body
-    console.log(`RECIEVED PAYLOAD: ${userId}, ${name}, ${cost}, ${costType}, ${tribe}, ${image}, ${description}`);
+    // console.log(`RECIEVED PAYLOAD: ${userId}, ${name}, ${cost}, ${costType}, ${tribe}, ${image}, ${description}`);
     const card = await Card.create({
         userId: userId,
         name: name,
@@ -45,14 +66,14 @@ router.post('/', asyncHandler(async(req,res) => {
 }))
 
 //Delete a card
-router.delete('/:cardId/delete', asyncHandler(async(req,res) => {
-    const cardId = parseInt(req.params.cardId)
+router.delete('/:cardId', asyncHandler(async(req,res) => {
+    const cardId = req.params.cardId
     const card = await Card.findByPk(cardId)
     if (card) {
-        card.destroy();
-        res.json({"message":"Deleted"})
+        await card.destroy();
+        return res.json({"message":"Deleted"})
     } else {
-        res.json({"message":"Something went wrong"})
+        return res.json({"message":"Something went wrong"})
     }
 
 }))
