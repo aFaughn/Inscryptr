@@ -15,7 +15,7 @@ router.get('/', asyncHandler(async(req,res) => {
     })
 )
 
-//Get Card Details
+//Get One Card
 router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
     const card = await Card.findByPk(req.params.id);
     const cardArr = [];
@@ -24,6 +24,9 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
         return res.json(cardArr)
     }
 }))
+
+//Get card by TribeId
+
 
 //Submit changes to card
 router.put('/:id(\\d+)', asyncHandler(async(req,res) => {

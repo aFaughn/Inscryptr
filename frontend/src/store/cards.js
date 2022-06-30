@@ -40,6 +40,12 @@ const deleteCard = (card) => {
     }
 }
 
+const getTribecards = (cards) => {
+    return {
+        type: LOAD_CARD,
+        cards
+    }
+}
 
 export const getAllCards = () => async (dispatch) => {
     const response = await fetch(`/api/cards`)
@@ -106,6 +112,19 @@ export const deleteOneCard = (card) => async (dispatch) => {
         console.log('Well ____ ... uh oh.')
     }
 }
+
+export const getCardsByTribeId = (tribeId) => async (dispatch) => {
+    const response = await fetch(`/api/tribes/${tribeId}/cards`)
+
+    if (response.ok) {
+        const cards = await response.json();
+        dispatch(loadAllCards(cards))
+        return response
+    } else {
+        return await response.json()
+    }
+}
+
 
 // Reducer
 

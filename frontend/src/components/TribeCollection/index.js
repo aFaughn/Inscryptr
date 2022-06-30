@@ -1,29 +1,46 @@
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {getAllTribes} from '../../store/tribes';
+import {getCardsByTribeId} from '../../store/cards';
 import './index.css';
 
 const TribeCollection = () => {
-    // Create a thunk that fetches all cards with the matching tribe id
-    // add thunk to root reducer
-    //display cards in this component
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const tribeId = useParams();
+    console.log(tribeId)
+    useEffect(() => {
+        dispatch(getCardsByTribeId(tribeId.tribeId));
+        dispatch(getAllTribes())
+    },[dispatch])
+
+
+
     const cards = useSelector(state=>state.cards.cards);
-    const sessionUser = useSelector(state => state.session.user);
-    if (!sessionUser) {
-        history.push('/');
-    }
-    // useEffect(() => {
-    //     dispatch(getAllCards())
-    // },[dispatch])
+    const tribes = useSelector(state=>state.tribes.tribes)
+    // const sessionUser = useSelector(state => state.session.user);
+    // if (!sessionUser) {
+    //     history.push('/');
+    // }
+
+    const tribe = tribes.find(tribe => tribe.id == tribeId.tribeId)
+    const card = cards.find(card => card.tribeId == tribeId.tribeId);
+
     return (
         <div>
             <div className='Cards-Container'>
-                <h1>Cards Belonging to the Tribe: PLACEHOLDER</h1>
+                <h1>{`Cards Belonging to the Tribe: ${tribe.title}`}</h1>
                 <div className='cards-wrapper'>
+                {cards.map((card) => (
+                    <div className='card' key={card.id}>
+                        {`${card.name}, ${card.cost} ${card.costType}`}
+                        <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' src={card.imageUrl}></img></Link>
+                        <div className='edit'><Link to={`/cards/${card.id}`}>Edit</Link></div>
+                    </div>
+                ))}
                 </div>
             </div>
         </div>
