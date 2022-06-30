@@ -1,4 +1,4 @@
-import {csrfFetch } from '/csrf';
+import {csrfFetch } from './csrf';
 
 const LOAD_TRIBE = 'tribes/loadTribe'
 const DELETE_TRIBE = 'tribes/deleteTribe'
@@ -19,14 +19,14 @@ const loadOneTribe = (tribe) => {
     }
 }
 
-const createTribe = () => {
+const createTribe = (tribe) => {
     return {
         type: CREATE_TRIBE,
         tribe
     }
 }
 
-const deleteTribe = () => {
+const deleteTribe = (tribe) => {
     return {
         type: DELETE_TRIBE,
         tribe
@@ -45,5 +45,20 @@ export const getAllTribes = () => async (dispatch) => {
     }
 }
 
+const InitialState = {
+    tribes: []
+}
 
 //TODO Add this reducer to the root reducer in ./store/store.js
+const tribeReducer = (state = InitialState, action) => {
+    switch (action.type) {
+        case LOAD_TRIBE: return {
+            ...state, tribes: [...action.tribes]
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+export default tribeReducer;

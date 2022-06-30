@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const cardsRouter = require('./cards.js');
+const tribeRouter = require('./tribes.js')
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie } = require('../../utils/auth.js');
@@ -12,6 +13,7 @@ const { requireAuth } = require('../../utils/auth.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
+router.use('/tribes', tribeRouter)
 
 router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
   const user = await User.findOne({

@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 
 import sessionReducer from './session';
 import cardReducer from './cards';
+import tribeReducer from './tribes';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   cards: cardReducer,
+  tribes: tribeReducer
 });
 
 let enhancer;

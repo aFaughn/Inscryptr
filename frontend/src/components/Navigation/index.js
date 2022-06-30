@@ -28,6 +28,7 @@ function Navigation({ isLoaded }){
       <>
       <ProfileButton user={sessionUser} />
       <NavLink to='/cards'>Cards</NavLink>
+      <NavLink to='/tribes'>Tribes</NavLink>
       </>
     );
   } else {

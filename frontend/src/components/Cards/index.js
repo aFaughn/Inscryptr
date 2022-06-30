@@ -1,5 +1,6 @@
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import {getAllCards} from '../../store/cards';
 import { Link } from 'react-router-dom';
 import './index.css';
@@ -15,7 +16,12 @@ const Cards = () => {
 
     //TODO: useSelector to access state and map each card out to a div.
     const dispatch = useDispatch();
+    const history = useHistory();
     const cards = useSelector(state=>state.cards.cards);
+    const sessionUser = useSelector(state => state.session.user);
+    if (!sessionUser) {
+        history.push('/');
+    }
     useEffect(() => {
         dispatch(getAllCards())
     },[dispatch])
