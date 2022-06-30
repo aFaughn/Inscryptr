@@ -28,7 +28,7 @@ const Cards = () => {
     return (
         <div>
             <div className='Cards-Container'>
-                <h1>Hello from Cards</h1>
+                <h1>Cards</h1>
                 <div className='cards-wrapper'>
                 <div className='create-new-card'><Link to='/cards/new'>+</Link></div>
                 {cards.map((card) => (

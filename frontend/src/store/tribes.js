@@ -45,6 +45,23 @@ export const getAllTribes = () => async (dispatch) => {
     }
 }
 
+export const createNewTribe = (tribe) => async (dispatch) => {
+    const response = await csrfFetch('/api/tribes', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(tribe)
+    })
+
+    if (response.ok) {
+        const tribes = await response.json();
+        await dispatch(createTribe(tribe))
+        return tribes;
+    }
+}
+
+
+
+
 const InitialState = {
     tribes: []
 }
@@ -54,6 +71,9 @@ const tribeReducer = (state = InitialState, action) => {
     switch (action.type) {
         case LOAD_TRIBE: return {
             ...state, tribes: [...action.tribes]
+        }
+        case CREATE_TRIBE: return {
+            ...state
         }
         default: {
             return state;

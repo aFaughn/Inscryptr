@@ -7,16 +7,23 @@ import './index.css';
 
 const Tribes = () => {
     const dispatch = useDispatch();
-    const cards = useSelector(state=>state.cards.cards);
+    const tribes = useSelector(state=>state.tribes.tribes);
     useEffect(() => {
-        dispatch(getAllCards())
+        dispatch(getAllTribes())
     },[dispatch])
     return (
         <div>
             <div className='Tribes-Container'>
-                <h1>Hello from Cards</h1>
+                <h1>Tribes</h1>
                 <div className='tribe-wrapper'>
-                    <div className='create-new-tribe'><Link to='/cards/new'>+</Link></div>
+                    <div className='create-new-tribe'><Link to='/tribes/new'>+</Link></div>\
+                    {tribes.map((tribe) => (
+                    <div className='tribe' key={tribe.id}>
+                        {`${tribe.title}`}
+                        <Link to={`/tribes/${tribe.id}/cards`}><img alt={tribe.name} className='tribeArt' src={tribe.tribeIcon}></img></Link>
+                        <div className='edit'><Link to={`/tribes/${tribe.id}`}>Edit</Link></div>
+                    </div>
+                ))}
                 </div>
             </div>
         </div>

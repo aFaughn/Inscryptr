@@ -1,6 +1,13 @@
 body {
     background-image: url('../../../public/img/door_dark.jpg');
+    font-family: 'Heavyweight Regular';
 }
 div {
     background-color: white;
+}
+@font-face {
+    font-family: 'Heavyweight Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Heavyweight Regular'), url('../../../public/font/HEAVYWEI.woff') format('woff');
 }

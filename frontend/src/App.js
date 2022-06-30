@@ -9,6 +9,10 @@ import Navigation from "./components/Navigation";
 import Cards from './components/Cards';
 import CreateCard from './components/CreateCard';
 import CardDetails from "./components/CardDetails";
+import Tribes from './components/Tribes';
+import TribeCollection from './components/TribeCollection';
+import CreateTribe from "./components/CreateTribe";
+import stoat from './stoat';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,8 +44,19 @@ function App() {
           <Route path='/cards/:cardId' exact>
             <CardDetails/>
           </Route>
+          <Route path='/tribes' exact>
+            <Tribes/>
+          </Route>
+          <Route path='/tribes/:tribeId/cards' exact>
+            <TribeCollection/>
+          </Route>
+          <Route path='/tribes/new' exact>
+            <CreateTribe/>
+          </Route>
           <Route>
-            <h1>404: Your Stoat is in another castle</h1>
+            <h1>error 404: Total Misplay</h1>
+            <br></br>
+            <div style={{border: 0}}><img style={{width: 400, height: 500 }} src='https://i.imgur.com/K3ofSsS.png' alt='stoat'></img></div>
           </Route>
         </Switch>
       )}
