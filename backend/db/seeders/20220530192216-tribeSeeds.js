@@ -4,7 +4,9 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Tribes', [
         //userId, title, tribeIcon
-        {userId: 1, title: 'Canine', tribeIcon: '', createdAt: new Date(), updatedAt: new Date()},
+        {userId: 1, title: 'Canine', tribeIcon: 'https://i.imgur.com/IMzQf8k.png', createdAt: new Date(), updatedAt: new Date()},
+        {userId: 1, title: 'Avian', tribeIcon: 'https://i.imgur.com/8duW2EX.png', createdAt: new Date(), updatedAt: new Date()},
+        {userId: 1, title: 'Reptile', tribeIcon: 'https://i.imgur.com/pYcvjCg.png', createdAt: new Date(), updatedAt: new Date()},
     ], {});
   },
 

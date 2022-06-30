@@ -1,36 +1,39 @@
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
-import {getAllCards} from '../../store/cards';
+import {useHistory, useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {getAllTribes} from '../../store/tribes';
+import {getCardsByTribeId} from '../../store/cards';
 import './index.css';
 
-const Cards = () => {
-    //What needs to happen here:
-    //Create an action to Load X
-    //Create a Route that fetches all cards from the DB X
-    //Create a thunk that sends a Fetch to backend for cards
+const TribeCollection = () => {
 
-    /* Upon page load, For each card recieved from the backend (map)
-    create a div for that card, with an edit and delete button. */
-
-    //TODO: useSelector to access state and map each card out to a div.
     const dispatch = useDispatch();
     const history = useHistory();
-    const cards = useSelector(state=>state.cards.cards);
-    const sessionUser = useSelector(state => state.session.user);
-    if (!sessionUser) {
-        history.push('/');
-    }
+    const tribeId = useParams();
+    console.log(tribeId)
     useEffect(() => {
-        dispatch(getAllCards())
+        dispatch(getCardsByTribeId(tribeId.tribeId));
+        dispatch(getAllTribes())
     },[dispatch])
+
+
+
+    const cards = useSelector(state=>state.cards.cards);
+    const tribes = useSelector(state=>state.tribes.tribes)
+    // const sessionUser = useSelector(state => state.session.user);
+    // if (!sessionUser) {
+    //     history.push('/');
+    // }
+
+    const tribe = tribes.find(tribe => tribe.id == tribeId.tribeId)
+    const card = cards.find(card => card.tribeId == tribeId.tribeId);
+
     return (
         <div>
             <div className='Cards-Container'>
-                <h1>Cards</h1>
+                <h1>{`Cards Belonging to the Tribe: ${tribe.title}`}</h1>
                 <div className='cards-wrapper'>
-                <div className='create-new-card'><Link to='/cards/new'>+</Link></div>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
                         {`${card.name}, ${card.cost} ${card.costType}`}
@@ -44,4 +47,4 @@ const Cards = () => {
     )
 }
 
-export default Cards
+export default TribeCollection
