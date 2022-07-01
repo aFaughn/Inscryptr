@@ -2,8 +2,34 @@ body {
     background-image: url('../../../public/img/door_dark.jpg');
     font-family: 'Heavyweight Regular';
 }
+.content-wrapper {
+    border: none;
+}
+.root {
+    border: none;
+}
 div {
-    background-color: white;
+    background-color: none;
+    border: none;
+}
+.welcome {
+    color: rgb(255,106,0);
+    text-align: center;
+    font-size: 80px;
+    border: none;
+}
+.Inscryptr {
+    height: 300px;
+    border: none;
+}
+.Inscryptr > h1 {
+    color: rgb(255,106,0);
+    font-size: 180px;
+    text-align: center;
+}
+.banner {
+    display: flex;
+    justify-content: center;
 }
 @font-face {
     font-family: 'Heavyweight Regular';

@@ -1,3 +1,42 @@
 div {
-    border: 1px solid black;
+    border: none;
+}
+ul {
+    background-color: rgba(30,30,30,0.7);
+    font-size: 35px;
+    padding-top: 5px;
+    border-radius: 10px;
+}
+a {
+    text-decoration: none;
+    color: rgb(255,106,0);
+}
+a:hover {
+    text-shadow: 0px 0px 10px orange;
+}
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+button {
+    background-color: rgb(255,106,0);
+    border-radius: 30px;
+    font-family: 'Heavyweight Regular';
+    height: 54px;
+    width: 54px;
+    margin-top: 0px;
+    font-size: 20px;
+}
+button:hover {
+    box-shadow: 0px 0px 10px orange;
+    cursor: pointer;
+}
+.profile-dropdown {
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+.logout {
+    width: 150px;
 }

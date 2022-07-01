@@ -31,14 +31,14 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fa-solid fa-aperture"></i>
+        <i class="fa-solid fa-user"></i>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button className='logout' onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
