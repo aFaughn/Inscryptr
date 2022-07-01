@@ -2,11 +2,13 @@ import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {createNewCard} from '../../store/cards';
+import { getAllTribes } from '../../store/tribes';
 
 const CreateCard = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id)
+    const tribes = useSelector(state => state.tribes.tribes)
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
@@ -15,6 +17,10 @@ const CreateCard = () => {
     const [image, setImage] = useState('https://i.imgur.com/lJrAYOk.png');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        dispatch(getAllTribes())
+    },[dispatch])
 
     useEffect(() => {
         const errors = [];
@@ -101,7 +107,9 @@ const CreateCard = () => {
             <select
             value={tribe}
             onChange={(e) => setTribe(e.target.value)}>
-                <option value={tribe}>PLACEHOLDER</option>
+                    {tribes.map(tribe => (
+                        <option key={tribe} value={tribe.id}>{tribe.title}</option>
+                    ))}
             </select>
             <label>Image URL</label>
             <input

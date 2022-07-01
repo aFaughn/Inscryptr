@@ -2,15 +2,18 @@ import {useEffect, useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {getOneCard} from '../../store/cards';
 import {useParams, useHistory} from 'react-router-dom';
-import { deleteOneCard } from '../../store/cards';
-import { editOneCard } from '../../store/cards';
+import { deleteOneCard, editOneCard } from '../../store/cards';
+import {getAllTribes} from '../../store/tribes';
 
 const CardDetails = () => {
     const {cardId} = useParams();
     const dispatch = useDispatch();
     const cards = useSelector(state=>state.cards.cards);
-    const history = useHistory();
+    const tribes = useSelector(state=>state.tribes.tribes);
     const userId = useSelector(state => state.session.user.id)
+    const history = useHistory();
+
+    // console.log(tribes);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
@@ -27,6 +30,7 @@ const CardDetails = () => {
     //Fetches card stats
     useEffect(() => {
         dispatch(getOneCard(cardId))
+        dispatch(getAllTribes())
     },[dispatch, cardId])
 
     //Handles delete button click
@@ -136,10 +140,13 @@ const CardDetails = () => {
                     <option value='bones'>Bones</option>
                     <option value='energy'>Energy</option>
                 </select>
+                <label>Tribe</label>
                 <select
                 value={tribe}
                 onChange={(e) => setTribe(e.target.value)}>
-                    <option value={tribe}>PLACEHOLDER</option>
+                    {tribes.map(tribe => (
+                        <option key={tribe} value={tribe.id}>{tribe.title}</option>
+                    ))}
                 </select>
                 <label>Image URL</label>
                 <input
