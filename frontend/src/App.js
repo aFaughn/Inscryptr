@@ -23,7 +23,6 @@ function App() {
 
   const sessionUser = useSelector(state => state.session.user);
   const loggedIn = !!sessionUser
-  console.log(loggedIn);
 
 
   return (

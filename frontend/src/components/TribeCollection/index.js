@@ -9,25 +9,23 @@ import './index.css';
 const TribeCollection = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const tribeId = useParams();
     console.log(tribeId)
+
     useEffect(() => {
-        dispatch(getCardsByTribeId(tribeId.tribeId));
         dispatch(getAllTribes())
+        dispatch(getCardsByTribeId(tribeId.tribeId));
     },[dispatch])
 
 
 
     const cards = useSelector(state=>state.cards.cards);
     const tribes = useSelector(state=>state.tribes.tribes)
-    // const sessionUser = useSelector(state => state.session.user);
-    // if (!sessionUser) {
-    //     history.push('/');
-    // }
 
     const tribe = tribes.find(tribe => tribe.id == tribeId.tribeId)
-    const card = cards.find(card => card.tribeId == tribeId.tribeId);
+    console.log(`SELECTED TRIBE: ${tribe}`)
+    console.log(`TRIBES RETURNED FROM FETCH: ${tribes}`)
+    // const card = cards.find(card => card.tribeId == tribeId.tribeId);
 
     return (
         <div>

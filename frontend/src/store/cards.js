@@ -118,7 +118,7 @@ export const getCardsByTribeId = (tribeId) => async (dispatch) => {
 
     if (response.ok) {
         const cards = await response.json();
-        dispatch(loadAllCards(cards))
+        dispatch(getTribecards(cards))
         return response
     } else {
         return await response.json()
