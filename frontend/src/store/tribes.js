@@ -1,9 +1,9 @@
 import {csrfFetch } from './csrf';
 
 const LOAD_TRIBE = 'tribes/loadTribe'
-const DELETE_TRIBE = 'tribes/deleteTribe'
 const CREATE_TRIBE = 'tribes/createTribe'
-// const EDIT_TRIBE = 'tribes/editTribe'
+const EDIT_TRIBE = 'tribes/editTribe'
+const LOAD_ONE_TRIBE = 'tribes/loadOneTribe'
 
 const loadTribes = (tribes) => {
     return {
@@ -14,7 +14,7 @@ const loadTribes = (tribes) => {
 
 const loadOneTribe = (tribe) => {
     return {
-        type: LOAD_TRIBE,
+        type: LOAD_ONE_TRIBE,
         tribe
     }
 }
@@ -26,9 +26,9 @@ const createTribe = (tribe) => {
     }
 }
 
-const deleteTribe = (tribe) => {
+const editTribe = (tribe) => {
     return {
-        type: DELETE_TRIBE,
+        type: EDIT_TRIBE,
         tribe
     }
 }
@@ -59,7 +59,31 @@ export const createNewTribe = (tribe) => async (dispatch) => {
     }
 }
 
+export const fetchOneTribe = (tribe) => async (dispatch) => {
+    const response = await fetch(`/api/tribes/${tribe}`)
 
+    if (response.ok) {
+        const tribes = await response.json();
+        dispatch(loadOneTribe(tribes))
+        return response;
+    } else {
+        return await response.json();
+    }
+}
+
+export const editTribeThunk = (stats) => async (dispatch) => {
+    const response = await csrfFetch(`/api/tribes/${stats.id}`, {
+        method: 'PUT',
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(stats)
+    })
+
+    if (response.ok) {
+        const tribes = await response.json();
+        dispatch(editTribe(tribes))
+        return tribes;
+    }
+}
 
 
 const InitialState = {
@@ -74,6 +98,9 @@ const tribeReducer = (state = InitialState, action) => {
         }
         case CREATE_TRIBE: return {
             ...state
+        }
+        case LOAD_ONE_TRIBE: return {
+            ...state, tribes: [...action.tribe]
         }
         default: {
             return state;

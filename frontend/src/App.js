@@ -12,6 +12,7 @@ import CardDetails from "./components/CardDetails";
 import Tribes from './components/Tribes';
 import TribeCollection from './components/TribeCollection';
 import CreateTribe from "./components/CreateTribe";
+import TribeEdit from  './components/TribeEdit';
 import stoat from './stoat';
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route path='/tribes/new' exact>
             <CreateTribe/>
+          </Route>
+          <Route path='/tribes/:tribeId' exact>
+            <TribeEdit/>
           </Route>
           <Route>
             <h1>error 404: Total Misplay</h1>
