@@ -23,8 +23,11 @@ const CardDetails = () => {
     const [formVisible, setFormVisible] = useState(false)
     const [ destructuredCard ] = cards;
 
-
     //TODO restrict edit button to owner of card
+    console.log(userId);
+    const isCardOwner = cards.map(card => (card.id === userId))
+    console.log(isCardOwner);
+
 
     //Fetches card stats
     useEffect(() => {
@@ -105,7 +108,7 @@ const CardDetails = () => {
                 ))}
         </div>
         <div><button onClick={handleClick}>Delete This Card?</button></div>
-        <div><button onClick={showForm}>Edit This Card</button></div>
+        <div><button onClick={showForm} disabled={!!isCardOwner}>Edit This Card</button></div>
         <div hidden={formVisible} className='form'>
             <form
             hidden={formVisible}
