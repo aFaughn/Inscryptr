@@ -14,7 +14,7 @@ const TribeCollection = () => {
     useEffect(() => {
         dispatch(fetchOneTribe(tribeId.tribeId))
         dispatch(getCardsByTribeId(tribeId.tribeId));
-    },[dispatch])
+    },[dispatch, tribeId.tribeId])
 
     const cards = useSelector(state=>state.cards.cards);
     const tribes = useSelector(state=>state.tribes.tribes)

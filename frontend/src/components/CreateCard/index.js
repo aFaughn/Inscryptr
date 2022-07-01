@@ -13,7 +13,7 @@ const CreateCard = () => {
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
     const [costType, setCostType] = useState('blood');
-    const [tribe, setTribe] = useState(null);
+    const [tribe, setTribe] = useState(0);
     const [image, setImage] = useState('https://i.imgur.com/lJrAYOk.png');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
@@ -62,7 +62,7 @@ const CreateCard = () => {
             image,
             description
         }
-        console.log(payload);
+        // console.log(payload);
 
         let createdCard = await dispatch(createNewCard(payload));
         if (createdCard) {
@@ -108,7 +108,7 @@ const CreateCard = () => {
             value={tribe}
             onChange={(e) => setTribe(e.target.value)}>
                     {tribes.map(tribe => (
-                        <option key={tribe} value={tribe.id}>{tribe.title}</option>
+                        <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
                     ))}
             </select>
             <label>Image URL</label>
