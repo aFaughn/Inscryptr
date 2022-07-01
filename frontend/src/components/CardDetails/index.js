@@ -16,7 +16,7 @@ const CardDetails = () => {
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
     const [costType, setCostType] = useState('blood');
-    const [tribe, setTribe] = useState(null);
+    const [tribe, setTribe] = useState(0);
     const [image, setImage] = useState('https://i.imgur.com/lJrAYOk.png');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
@@ -95,7 +95,7 @@ const CardDetails = () => {
 
         <div>
             {cards.map((card) => (
-                <ul key={card}>
+                <ul key={card.id}>
                     <li>Name: {card.name}</li>
                     <li>Cost: {card.cost} {card.costType}</li>
                     <li>Description: {card.description}</li>
@@ -144,7 +144,7 @@ const CardDetails = () => {
                 value={tribe}
                 onChange={(e) => setTribe(e.target.value)}>
                     {tribes.map(tribe => (
-                        <option key={tribe} value={tribe.id}>{tribe.title}</option>
+                        <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
                     ))}
                 </select>
                 <label>Image URL</label>
