@@ -22,5 +22,21 @@ router.get('/:tribeId(\\d+)/cards', asyncHandler(async(req,res) => {
     }
 }))
 
+//Create new tribe
+router.post('/', asyncHandler(async(req,res) => {
+
+    const {
+        userId,
+        name,
+        image,
+    } = req.body
+
+    const tribe = await Tribe.create({
+        userId: userId,
+        title: name,
+        tribeIcon: image,
+    })
+    return res.json(tribe);
+}))
 
 module.exports = router;

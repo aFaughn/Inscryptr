@@ -93,11 +93,11 @@ const CardDetails = () => {
         <div>
             {cards.map((card) => (
                 <ul key={card}>
-                    <li>{card.name}</li>
-                    <li>{card.cost}</li>
-                    <li>{card.costType}</li>
-                    <li>{card.creadAt}</li>
-                    <li>{card.tribeId}</li>
+                    <li>Name: {card.name}</li>
+                    <li>Cost: {card.cost} {card.costType}</li>
+                    <li>Description: {card.description}</li>
+                    <li>Created: {card.createdAt.slice(0,10)}</li>
+                    <li>Tribe: {card.tribeId}</li>
                 </ul>
                 ))}
         </div>

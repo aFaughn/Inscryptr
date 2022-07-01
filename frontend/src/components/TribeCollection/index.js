@@ -32,7 +32,7 @@ const TribeCollection = () => {
     return (
         <div>
             <div className='Cards-Container'>
-                <h1>{`Cards Belonging to the Tribe: ${tribe.title}`}</h1>
+                <h1>{`Cards Belonging to the Tribe: ${tribe.title}`}</h1><Link to='/tribes'>Back</Link>
                 <div className='cards-wrapper'>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
