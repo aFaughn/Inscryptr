@@ -13,8 +13,6 @@ const CardDetails = () => {
     const userId = useSelector(state => state.session.user.id)
     const history = useHistory();
 
-    // console.log(tribes);
-
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
     const [costType, setCostType] = useState('blood');
@@ -24,6 +22,7 @@ const CardDetails = () => {
     const [errors, setErrors] = useState([]);
     const [formVisible, setFormVisible] = useState(false)
     const [ destructuredCard ] = cards;
+
 
     //TODO restrict edit button to owner of card
 
