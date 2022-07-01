@@ -1,8 +1,8 @@
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {getAllTribes} from '../../store/tribes';
+import {fetchOneTribe} from '../../store/tribes';
 import {getCardsByTribeId} from '../../store/cards';
 import './index.css';
 
@@ -10,27 +10,19 @@ const TribeCollection = () => {
 
     const dispatch = useDispatch();
     const tribeId = useParams();
-    console.log(tribeId)
 
     useEffect(() => {
-        dispatch(getAllTribes())
+        dispatch(fetchOneTribe(tribeId.tribeId))
         dispatch(getCardsByTribeId(tribeId.tribeId));
     },[dispatch])
-
-
 
     const cards = useSelector(state=>state.cards.cards);
     const tribes = useSelector(state=>state.tribes.tribes)
 
-    const tribe = tribes.find(tribe => tribe.id == tribeId.tribeId)
-    console.log(`SELECTED TRIBE: ${tribe}`)
-    console.log(`TRIBES RETURNED FROM FETCH: ${tribes}`)
-    // const card = cards.find(card => card.tribeId == tribeId.tribeId);
-
     return (
         <div>
             <div className='Cards-Container'>
-                <h1>{`Cards Belonging to the Tribe: ${tribe.title}`}</h1><Link to='/tribes'>Back</Link>
+                <h1>{`Cards Belonging to the Tribe: ${tribes.map(tribe => (tribe.title))}`}</h1><Link to='/tribes'>Back</Link>
                 <div className='cards-wrapper'>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
