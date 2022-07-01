@@ -2,31 +2,34 @@ import {useEffect, useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {getOneCard} from '../../store/cards';
 import {useParams, useHistory} from 'react-router-dom';
-import { deleteOneCard } from '../../store/cards';
-import { editOneCard } from '../../store/cards';
+import { deleteOneCard, editOneCard } from '../../store/cards';
+import {getAllTribes} from '../../store/tribes';
 
 const CardDetails = () => {
     const {cardId} = useParams();
     const dispatch = useDispatch();
     const cards = useSelector(state=>state.cards.cards);
-    const history = useHistory();
+    const tribes = useSelector(state=>state.tribes.tribes);
     const userId = useSelector(state => state.session.user.id)
+    const history = useHistory();
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
     const [costType, setCostType] = useState('blood');
-    const [tribe, setTribe] = useState(null);
+    const [tribe, setTribe] = useState(0);
     const [image, setImage] = useState('https://i.imgur.com/lJrAYOk.png');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
     const [formVisible, setFormVisible] = useState(false)
     const [ destructuredCard ] = cards;
 
+
     //TODO restrict edit button to owner of card
 
     //Fetches card stats
     useEffect(() => {
         dispatch(getOneCard(cardId))
+        dispatch(getAllTribes())
     },[dispatch, cardId])
 
     //Handles delete button click
@@ -92,7 +95,7 @@ const CardDetails = () => {
 
         <div>
             {cards.map((card) => (
-                <ul key={card}>
+                <ul key={card.id}>
                     <li>Name: {card.name}</li>
                     <li>Cost: {card.cost} {card.costType}</li>
                     <li>Description: {card.description}</li>
@@ -136,10 +139,13 @@ const CardDetails = () => {
                     <option value='bones'>Bones</option>
                     <option value='energy'>Energy</option>
                 </select>
+                <label>Tribe</label>
                 <select
                 value={tribe}
                 onChange={(e) => setTribe(e.target.value)}>
-                    <option value={tribe}>PLACEHOLDER</option>
+                    {tribes.map(tribe => (
+                        <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
+                    ))}
                 </select>
                 <label>Image URL</label>
                 <input

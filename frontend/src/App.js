@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from './components/SplashPage';
@@ -13,7 +13,6 @@ import Tribes from './components/Tribes';
 import TribeCollection from './components/TribeCollection';
 import CreateTribe from "./components/CreateTribe";
 import TribeEdit from  './components/TribeEdit';
-import stoat from './stoat';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +20,10 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  const sessionUser = useSelector(state => state.session.user);
+  const loggedIn = !!sessionUser
+
 
   return (
     <>
@@ -37,25 +40,25 @@ function App() {
             <SplashPage/>
           </Route>
           <Route path='/cards' exact>
-            <Cards/>
+            {loggedIn ? <Cards/> : <Redirect to='/' />}
           </Route>
           <Route path='/cards/new' exact>
-            <CreateCard/>
+          {loggedIn ? <CreateCard/> : <Redirect to='/' />}
           </Route>
           <Route path='/cards/:cardId' exact>
-            <CardDetails/>
+          {loggedIn ? <CardDetails/> : <Redirect to='/' />}
           </Route>
           <Route path='/tribes' exact>
-            <Tribes/>
+          {loggedIn ? <Tribes/> : <Redirect to='/' />}
           </Route>
           <Route path='/tribes/:tribeId/cards' exact>
-            <TribeCollection/>
+          {loggedIn ? <TribeCollection/> : <Redirect to='/' />}
           </Route>
           <Route path='/tribes/new' exact>
-            <CreateTribe/>
+          {loggedIn ? <CreateTribe/> : <Redirect to='/' />}
           </Route>
           <Route path='/tribes/:tribeId' exact>
-            <TribeEdit/>
+          {loggedIn ? <TribeEdit/> : <Redirect to='/' />}
           </Route>
           <Route>
             <h1>error 404: Total Misplay</h1>

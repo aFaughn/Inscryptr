@@ -68,7 +68,7 @@ const TribeEdit = () => {
 
         <div>
             {tribes.map((tribe) => (
-                <ul key={tribe}>
+                <ul key={tribe.id}>
                     <li>Title: {tribe.title}</li>
                     <li>Icon: {tribe.tribeIcon}</li>
                 </ul>
