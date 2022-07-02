@@ -95,6 +95,7 @@ store = {
 ## Technical Details
 Inscryptr was built with Redux as it's state management system. While arguably overkill for a project of it's size, it's utilization has undoubtedly sharpened my skills in it's utilization.
 
+
  Due to time constraints, I was unable to resolve a way for users to reliably upload images to the app and serve them to other users. Instead, I opted to simply allow user's to provide a direct link to their image hosted by other sites such as Imgur.com which is where the seeder cards and tribes have their icons stored at.
 
 Cards and Tribes lists are populated by mapping JSX elements from an array of POJOS returned by a fetch call to the backend.
@@ -113,3 +114,4 @@ Cards and Tribes lists are populated by mapping JSX elements from an array of PO
 PLACEHOLDER
 ### Tribes
 PLACEHOLDER
+
