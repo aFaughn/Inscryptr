@@ -1,0 +1,13 @@
+.signup-form {
+    background-color: rgb(200,201,165);
+    border-radius: 10px;
+}
+.signup-form > button {
+    width: 150px;
+}
+.signup-form > label > input {
+    height: 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid black;
+}
