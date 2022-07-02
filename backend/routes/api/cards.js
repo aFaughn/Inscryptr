@@ -57,10 +57,7 @@ router.put('/:id(\\d+)', asyncHandler(async(req,res) => {
 
 //create a new card
 router.post('/', asyncHandler(async(req,res) => {
-    /*
-        Destructure payload
-        use Card.create to create new card
-    */
+
     const {
         userId,
         name,
@@ -97,13 +94,4 @@ router.delete('/:cardId', asyncHandler(async(req,res) => {
 
 }))
 
-// router.delete('/:id(\\d+)/delete', isLoggedIn, asyncHandler(async (req, res, next) => {
-// 	const taskId = parseInt(req.params.id)
-// 	const task = await Task.findByPk(taskId)
-// 	if (task) {
-// 	task.destroy();
-// 	res.json({"message":"Delete Successful"})
-// }
-// 	else { res.json({"message":"Delete Failed"})}
-// }))
 module.exports = router;
