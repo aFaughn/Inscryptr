@@ -17,7 +17,7 @@ const Cards = () => {
             <div className='Cards-Container'>
                 <h1>Cards</h1>
                 <div className='cards-wrapper'>
-                <div className='create-new-card'><Link to='/cards/new'>+</Link></div>
+                <Link to='/cards/new'><img alt='addNewCard' src='https://i.imgur.com/hpG52bc.png' className='create-new-card'></img></Link>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
                         {`${card.name}, ${card.cost} ${card.costType}`}

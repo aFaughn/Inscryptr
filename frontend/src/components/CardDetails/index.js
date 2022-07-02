@@ -4,6 +4,7 @@ import {getOneCard} from '../../store/cards';
 import {useParams, useHistory} from 'react-router-dom';
 import { deleteOneCard, editOneCard } from '../../store/cards';
 import {getAllTribes} from '../../store/tribes';
+import './index.css';
 
 const CardDetails = () => {
     const {cardId} = useParams();
@@ -83,28 +84,31 @@ const CardDetails = () => {
         if (description.length > 256) {
             errors.push('Description may be no longer than 256 Characters')
         }
+        if (tribe === 0) {
+            errors.push('Please select a tribe')
+        }
         setErrors(errors);
-    }, [name, cost, description])
+    }, [name, cost, description, tribe])
 
     // JSX ////////////////////////////////////////////////////////////
     return (
     <>
         <h1>Hello from Card Details</h1>
 
-        <div>
+        <div className='card-details'>
             {cards.map((card) => (
                 <ul key={card.id}>
-                    <li>Name: {card.name}</li>
-                    <li>Cost: {card.cost} {card.costType}</li>
-                    <li>Description: {card.description}</li>
-                    <li>Created: {card.createdAt.slice(0,10)}</li>
-                    <li>Tribe: {card.tribeId}</li>
+                    <li className='card-li'>Name: {card.name}</li>
+                    <li className='card-li'>Cost: {card.cost} {card.costType}</li>
+                    <li className='card-li'>Description: {card.description}</li>
+                    <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
+                    <li className='card-li'>Tribe: {card.tribeId}</li>
                 </ul>
                 ))}
         </div>
-        <div><button onClick={handleClick}>Delete This Card?</button></div>
-        <div><button onClick={showForm}>Edit This Card</button></div>
-        <div hidden={!formVisible} className='form'>
+        <div><button className='delete' onClick={handleClick}>Delete This Card?</button></div>
+        <div><button className='reveal' onClick={showForm}>Edit This Card</button></div>
+        <div hidden={formVisible} className='form'>
             <form
             hidden={formVisible}
             className='new-card-form'
@@ -141,6 +145,7 @@ const CardDetails = () => {
                 <select
                 value={tribe}
                 onChange={(e) => setTribe(e.target.value)}>
+                    <option disable={true}>Select Tribe...</option>
                     {tribes.map(tribe => (
                         <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
                     ))}
@@ -158,7 +163,7 @@ const CardDetails = () => {
                 value={description}
                 name='description'
                 onChange={(e)=>setDescription(e.target.value)}></input>
-                <button type='submit' disabled={!!errors.length}>Update</button>
+                <button className='submit' type='submit' disabled={!!errors.length}>Update</button>
                 </form>
         </div>
     </>

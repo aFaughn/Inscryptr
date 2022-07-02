@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {createNewCard} from '../../store/cards';
 import { getAllTribes } from '../../store/tribes';
+import './index.css';
 
 const CreateCard = () => {
     const history = useHistory();
@@ -75,8 +76,7 @@ const CreateCard = () => {
 
     return (
         <>
-        <h1>Hello from Create Card component</h1>
-        <form
+        <div className='form-wrapper'><form
         className='new-card-form'
         onSubmit={onSubmit}>
             <ul className='errors'>
@@ -110,6 +110,7 @@ const CreateCard = () => {
             <select
             value={tribe}
             onChange={(e) => setTribe(e.target.value)}>
+                    <option disable={true}>Select Tribe...</option>
                     {tribes.map(tribe => (
                         <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
                     ))}
@@ -127,8 +128,9 @@ const CreateCard = () => {
             value={description}
             name='description'
             onChange={(e)=>setDescription(e.target.value)}></input>
-            <button type='submit' disabled={!!errors.length}>Create New Card</button>
+            <button className='submitCard' type='submit' disabled={!!errors.length}>Create New Card</button>
         </form>
+        </div>
         </>
     )
 }

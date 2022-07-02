@@ -1,0 +1,70 @@
+.new-tribe-form {
+    background-color: rgb(200, 201, 165);
+    border: 5px solid rgb(255,156,0);
+}
+.submitTribe {
+    width: 200px;
+    color: black;
+}
+.tribe-details {
+    height: 200px;
+}
+.tribe-details > ul {
+    background-color: rgba(200, 201, 165,0);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 200px;
+    width: 400px;
+    font-size: 25px;
+    text-align: left;
+}
+.tribe-li {
+    text-align: left;
+    display: flex;
+    justify-content: left;
+}
+.new-tribe-form > input {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 25px;
+    width: 200px;
+    font-family: 'Heavyweight Regular';
+}
+.new-tribe-form > select {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.tribe-details {
+    background-color:rgb(200, 201, 165);
+    border: 5px solid rgb(44, 44, 44);
+    border-radius: 5px;
+}
+.tribe-details > ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 310px;
+    width: 400px;
+    font-size: 25px;
+    text-align: left;
+}
+.tribe-li {
+    text-align: left;
+    display: flex;
+    justify-content: left;
+}
+.delete {
+    width: 200px;
+}
+.reveal {
+    width: 200px;
+}
+.edit-tribe {
+    background-color:orangered;
+    width: 150px;
+}

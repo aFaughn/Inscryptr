@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {createNewTribe} from '../../store/tribes';
+import './index.css';
 
 const CreateTribe = () => {
     const history = useHistory();
@@ -74,7 +75,7 @@ const CreateTribe = () => {
             name='image'
             onChange={(e) => setImage(e.target.value)}>
             </input>
-            <button type='submit' disabled={!!errors.length}>Create New Card</button>
+            <button className='submit' type='submit' disabled={!!errors.length}>Create New Card</button>
         </form>
         </>
     )
