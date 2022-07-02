@@ -4,8 +4,8 @@ Inscryptr is a clone of Flickr, a photo sharing service. The twist with Inscrypt
 and albums, users are instead sharing Cards and Tribes based on the game 'Inscryption'. Users can create, edit, and delete cards, and create, edit, and add cards to tribes.
 
 ## Index
-- [Features](##Features)
-- [Components](##Components)
+- Features
+- Components
 - Schema
 - Frontend Routes
 - API Routes
