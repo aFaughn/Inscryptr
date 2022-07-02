@@ -37,8 +37,11 @@ const CreateCard = () => {
         if (description.length > 256) {
             errors.push('Description may be no longer than 256 Characters')
         }
+        if (tribe === 0) {
+            errors.push('Please select a tribe')
+        }
         setErrors(errors);
-    }, [name, cost, description])
+    }, [name, cost, description, tribe])
 
 
     const onSubmit = async (e) => {
@@ -62,7 +65,7 @@ const CreateCard = () => {
             image,
             description
         }
-        // console.log(payload);
+        console.log(payload);
 
         let createdCard = await dispatch(createNewCard(payload));
         if (createdCard) {

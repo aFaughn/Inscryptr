@@ -23,13 +23,11 @@ const CardDetails = () => {
     const [formVisible, setFormVisible] = useState(false)
     const [ destructuredCard ] = cards;
 
-
-    //TODO restrict edit button to owner of card
-
     //Fetches card stats
     useEffect(() => {
         dispatch(getOneCard(cardId))
         dispatch(getAllTribes())
+        setFormVisible(false);
     },[dispatch, cardId])
 
     //Handles delete button click
@@ -106,7 +104,7 @@ const CardDetails = () => {
         </div>
         <div><button onClick={handleClick}>Delete This Card?</button></div>
         <div><button onClick={showForm}>Edit This Card</button></div>
-        <div hidden={formVisible} className='form'>
+        <div hidden={!formVisible} className='form'>
             <form
             hidden={formVisible}
             className='new-card-form'

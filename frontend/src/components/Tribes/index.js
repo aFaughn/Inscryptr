@@ -1,7 +1,6 @@
 import { getAllTribes } from "../../store/tribes"
 import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {getAllCards} from '../../store/cards';
 import { Link } from 'react-router-dom';
 import './index.css';
 

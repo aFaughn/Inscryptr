@@ -18,7 +18,7 @@ and albums, users are instead sharing Cards and Tribes based on the game 'Inscry
 
 ## Features
 ### Sign Up
-Users can login and create accounts and any cards or tribes they make will remember who it was that made them. 
+Users can login and create accounts and any cards or tribes they make will remember who it was that made them.
 ### Navigation Bar
 A navigation component is always visible anywhere on the application for quick and easy browsing to any component.
 ### Demo User
@@ -70,14 +70,14 @@ store = {
 	       id,
 	       name,
 	       },
-       cards: {
-		name,
-		cost,
-		costType,
-		description,
-		tribeid
-		},
-       oneCard: { ...cardData  },
+	   cards: {
+		       name,
+		       cost,
+		       costType,
+		       description,
+		       tribeid
+		       },
+	   OneCard: { ...cardData  },
 }
 ```
 ## Installation
@@ -90,10 +90,11 @@ store = {
 7. run ```npm build``` to start the frontend react server on port 3000 in production mode
 8. If it does not automatically open a browser window, navigate to ```localhost:3000``` to access the app.
   ## Technologies Used
-  ![](https://img.shields.io/badge/-HTML-5555ff?style=flat-square&logo=html5&logoColor=FFFFFF) ![](https://img.shields.io/badge/-CSS-5555ff?style=flat-square&logo=css3&logoColor=FFFFFF) ![](https://img.shields.io/badge/-JS-5555ff?style=flat-square&logo=javascript&logoColor=FFFFFF)  ![](https://img.shields.io/badge/-React-5555ff?style=flat-square&logo=react&logoColor=FFFFFF) ![](https://img.shields.io/badge/-VScode-5555ff?style=flat-square&logo=visual-studio-code&logoColor=FFFFFF)  
+  ![](https://img.shields.io/badge/-HTML-5555ff?style=flat-square&logo=html5&logoColor=FFFFFF) ![](https://img.shields.io/badge/-CSS-5555ff?style=flat-square&logo=css3&logoColor=FFFFFF) ![](https://img.shields.io/badge/-JS-5555ff?style=flat-square&logo=javascript&logoColor=FFFFFF)  ![](https://img.shields.io/badge/-React-5555ff?style=flat-square&logo=react&logoColor=FFFFFF) ![](https://img.shields.io/badge/-VScode-5555ff?style=flat-square&logo=visual-studio-code&logoColor=FFFFFF)
 ![](https://img.shields.io/badge/-Express-5555ff?style=flat-square&logo=express&logoColor=ffffff)  ![](https://img.shields.io/badge/-Redux-5555ff?style=flat-square&logo=redux&logoColor=ffffff)  ![](https://img.shields.io/badge/-Postgres-5555ff?style=flat-square&logo=sequelize&logoColor=ffffff)  ![](https://img.shields.io/badge/-GitHub-5555ff?style=flat-square&logo=github&logoColor=ffffff)
 ## Technical Details
-Inscryptr was built with Redux as it's state management system. While arguably overkill for a project of it's size, it's utilization has undoubtedly sharpened my skills in it's utilization. 
+Inscryptr was built with Redux as it's state management system. While arguably overkill for a project of it's size, it's utilization has undoubtedly sharpened my skills in it's utilization.
+
 
  Due to time constraints, I was unable to resolve a way for users to reliably upload images to the app and serve them to other users. Instead, I opted to simply allow user's to provide a direct link to their image hosted by other sites such as Imgur.com which is where the seeder cards and tribes have their icons stored at.
 
@@ -108,4 +109,9 @@ Cards and Tribes lists are populated by mapping JSX elements from an array of PO
 
 ## Screenshots
 ### Splash Page
-TBD
+![splashPage](https://i.imgur.com/HekZPQg.png)
+### Cards
+PLACEHOLDER
+### Tribes
+PLACEHOLDER
+
