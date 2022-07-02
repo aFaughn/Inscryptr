@@ -98,7 +98,7 @@ Inscryptr was built with Redux as it's state management system. While arguably o
 
  Due to time constraints, I was unable to resolve a way for users to reliably upload images to the app and serve them to other users. Instead, I opted to simply allow user's to provide a direct link to their image hosted by other sites such as Imgur.com which is where the seeder cards and tribes have their icons stored at.
 
-Cards and Tribes lists are populated by mapping JSX elements from an array of POJOS returned by a fetch call to the backend.
+Cards and Tribes lists are populated by mapping JSX elements from an array of POJOS returned by a fetch call to the backend through Redux store.
 ## Planned Features
  - [ ] Users are only able to modify cards that they have created
  - [ ] Users can alternatively upload images directly to the app
