@@ -16,3 +16,30 @@
     border-radius: 5px;
     border: 1px solid black;
 }
+.card-details {
+    background-color:rgb(200, 201, 165);
+    border: 5px solid rgb(44, 44, 44);
+    border-radius: 5px;
+}
+.card-details > ul {
+    background-color: rgb(200, 201, 165);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 310px;
+    width: 400px;
+    font-size: 25px;
+    text-align: left;
+}
+.card-li {
+    text-align: left;
+    display: flex;
+    justify-content: left;
+}
+.delete {
+    width: 200px;
+}
+.reveal {
+    width: 200px;
+}

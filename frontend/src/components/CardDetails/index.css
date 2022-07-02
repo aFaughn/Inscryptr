@@ -1,0 +1,28 @@
+.new-card-form {
+    background-color: rgb(200, 201, 165);
+    border: 5px solid rgb(255,156,0);
+}
+.submitCard {
+    width: 200px;
+    color: black;
+}
+.new-card-form > input {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.new-card-form > select {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.submit {
+    width: 150px;
+}
+.new-card-form > input {
+    height: 25px;
+    font-family: 'Heavyweight Regular';
+}
+.new-card-form > select {
+    height: 25px;
+}

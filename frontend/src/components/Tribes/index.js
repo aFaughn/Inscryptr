@@ -15,7 +15,8 @@ const Tribes = () => {
             <div className='Tribes-Container'>
                 <h1>Tribes</h1>
                 <div className='tribe-wrapper'>
-                    <div className='create-new-tribe'><Link to='/tribes/new'>+</Link></div>\
+                <Link to='/tribes/new'><img alt='addNewTribe' src='https://i.imgur.com/hpG52bc.png' className='create-new-tribe'></img></Link>
+                    {/* <div className='create-new-tribe'><Link to='/tribes/new'>+</Link></div> */}
                     {tribes.map((tribe) => (
                     <div className='tribe' key={tribe.id}>
                         {`${tribe.title}`}

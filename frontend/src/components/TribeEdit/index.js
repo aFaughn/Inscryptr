@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
 import {fetchOneTribe, editTribeThunk} from '../../store/tribes';
+import './index.css';
 
 const TribeEdit = () => {
     const {tribeId} = useParams();
@@ -64,17 +65,16 @@ const TribeEdit = () => {
     // JSX ////////////////////////////////////////////////////////////
     return (
     <>
-        <h1>Hello from Tribe Details</h1>
 
-        <div>
+        <div className='tribe-details'>
             {tribes.map((tribe) => (
                 <ul key={tribe.id}>
-                    <li>Title: {tribe.title}</li>
-                    <li>Icon: {tribe.tribeIcon}</li>
+                    <li className='tribe-li'>Title: {tribe.title}</li>
+                    <li className='tribe-li'>Icon: {tribe.tribeIcon}</li>
                 </ul>
                 ))}
         </div>
-        <div><button onClick={showForm}>Edit This Tribe</button></div>
+        <div><button className='edit-tribe' onClick={showForm}>Edit This Tribe</button></div>
         <div hidden={formVisible} className='form'>
             <form
             hidden={formVisible}
@@ -100,7 +100,7 @@ const TribeEdit = () => {
                 name='image'
                 onChange={(e) => setImage(e.target.value)}>
                 </input>
-                <button type='submit' disabled={!!errors.length}>Update</button>
+                <button type='submit' className='delete' disabled={!!errors.length}>Update</button>
                 </form>
         </div>
     </>
