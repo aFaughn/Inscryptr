@@ -70,14 +70,14 @@ store = {
 	       id,
 	       name,
 	       },
-	   cards: {
-		       name,
-		       cost,
-		       costType,
-		       description,
-		       tribeid
-		       },
-	   OneCard: { ...cardData  },
+       cards: {
+		name,
+		cost,
+		costType,
+		description,
+		tribeid
+		},
+       oneCard: { ...cardData  },
 }
 ```
 ## Installation
