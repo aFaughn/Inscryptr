@@ -110,7 +110,7 @@ const CreateCard = () => {
             <select
             value={tribe}
             onChange={(e) => setTribe(e.target.value)}>
-                    <option disable={true}>Select Tribe...</option>
+                    <option disabled>Select Tribe...</option>
                     {tribes.map(tribe => (
                         <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
                     ))}

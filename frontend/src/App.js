@@ -61,7 +61,7 @@ function App() {
           {loggedIn ? <TribeEdit/> : <Redirect to='/' />}
           </Route>
           <Route>
-            <h1>error 404: Total Misplay</h1>
+            <h1 style={{color: 'orangered'}}>error 404: Total Misplay</h1>
             <br></br>
             <div style={{border: 0}}><img style={{width: 400, height: 500 }} src='https://i.imgur.com/K3ofSsS.png' alt='stoat'></img></div>
           </Route>
