@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import './CardSearch.css';
 
 function CardSearch() {
@@ -34,12 +35,12 @@ function CardSearch() {
                 <div id='results'>
                     <ul id='searchResultsUl'>
                     {!!searchResults.length && searchResults.map(result => (
-                        <>
+                        <Link className='searchLink' to={`/cards/${result.id}`}>
                             <div className='result'>
                                 <p id='resName'>{result.name}</p>
                                 <p id='resCost'>{'🩸'.repeat(result.cost)}</p>
                             </div>
-                        </>
+                        </Link>
                     ))}
                     </ul>
                 </div>
