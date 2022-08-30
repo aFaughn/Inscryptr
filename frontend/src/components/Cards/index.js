@@ -14,17 +14,15 @@ const Cards = () => {
         dispatch(getAllCards())
     },[dispatch])
     return (
-        <div>
+        <div id='/cards'>
             <div id='searchComponentWrapper'>
                 <CardSearch/>
             </div>
             <div className='Cards-Container'>
-                <h1>Cards</h1>
                 <div className='cards-wrapper'>
-                <Link to='/cards/new'><img alt='addNewCard' src='https://i.imgur.com/hpG52bc.png' className='create-new-card'></img></Link>
+                <Link className='create-new-card' to='/cards/new'><img alt='addNewCard' src='https://i.imgur.com/hpG52bc.png'></img></Link>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
-                        {`${card.name}, ${card.cost} ${card.costType}`}
                         <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' src={card.imageUrl}></img></Link>
                     </div>
                 ))}
