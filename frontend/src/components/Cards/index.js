@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 // import {useHistory} from 'react-router-dom';
 import {getAllCards} from '../../store/cards';
 import { Link } from 'react-router-dom';
+import CardSearch from '../CardSearch/CardSearch';
 import './index.css';
 
 const Cards = () => {
@@ -14,6 +15,9 @@ const Cards = () => {
     },[dispatch])
     return (
         <div>
+            <div id='searchComponentWrapper'>
+                <CardSearch/>
+            </div>
             <div className='Cards-Container'>
                 <h1>Cards</h1>
                 <div className='cards-wrapper'>

@@ -1,0 +1,22 @@
+.SearchBanner {
+    color: rgb(255,106,0);
+    font-size: 22px;
+}
+#searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+}
+.searchBar {
+    width: 500px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #666;
+    color: rgb(255,106,0);
+    background-color: #333;
+    font-family: Heavyweight;
+    font-size: 22px;
+    text-align: center;
+}

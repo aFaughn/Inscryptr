@@ -93,7 +93,6 @@ const CardDetails = () => {
     // JSX ////////////////////////////////////////////////////////////
     return (
     <>
-        <h1>Hello from Card Details</h1>
 
         <div className='card-details'>
             {cards.map((card) => (
@@ -164,7 +163,7 @@ const CardDetails = () => {
                 name='description'
                 onChange={(e)=>setDescription(e.target.value)}></input>
                 <button className='submit' type='submit' disabled={!!errors.length}>Update</button>
-                </form>
+            </form>
         </div>
     </>
 )
