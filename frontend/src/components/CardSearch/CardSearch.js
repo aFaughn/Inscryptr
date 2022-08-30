@@ -32,12 +32,16 @@ function CardSearch() {
             </div>
             <div id='results-wrapper'>
                 <div id='results'>
+                    <ul id='searchResultsUl'>
                     {!!searchResults.length && searchResults.map(result => (
-                        <ul>
-                            <li>{result.name}</li>
-                            <li>{result.cost}{result.costType}</li>
-                        </ul>
+                        <>
+                            <div className='result'>
+                                <p id='resName'>{result.name}</p>
+                                <p id='resCost'>{'🩸'.repeat(result.cost)}</p>
+                            </div>
+                        </>
                     ))}
+                    </ul>
                 </div>
             </div>
         </div>

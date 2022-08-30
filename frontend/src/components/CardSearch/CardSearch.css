@@ -20,3 +20,44 @@
     font-size: 22px;
     text-align: center;
 }
+.result {
+    color: rgb(255,106,0);
+    height: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.results {
+    position: absolute;
+    color: rgb(255,106,0);
+}
+#searchResultsUl {
+    margin: 0px;
+    padding: 0px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+#results-wrapper {
+    width: 500px;
+    position: absolute;
+    top: 265px;
+}
+#resName {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    align-items: center;
+    height: 30px;
+}
+#resCost {
+    display: flex;
+    justify-content: flex-end;
+    width: 100px;
+    padding-right: 10px;
+}
