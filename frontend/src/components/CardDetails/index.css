@@ -1,31 +1,3 @@
-.new-card-form {
-    background-color: rgb(200, 201, 165);
-    border: 5px solid rgb(255,156,0);
-}
-.submitCard {
-    width: 200px;
-    color: black;
-}
-.new-card-form > input {
-    background-color: rgb(200, 201, 165);
-    border-radius: 5px;
-    border: 1px solid black;
-}
-.new-card-form > select {
-    background-color: rgb(200, 201, 165);
-    border-radius: 5px;
-    border: 1px solid black;
-}
-.submit {
-    width: 150px;
-}
-.new-card-form > input {
-    height: 25px;
-    font-family: 'Heavyweight Regular';
-}
-.new-card-form > select {
-    height: 25px;
-}
 #cardDetailsWrapper {
     margin-left: 20%;
     margin-right: 20%;
@@ -78,4 +50,61 @@
 }
 #description {
     height: 106px;
+}
+/* ------------------ */
+/* Form Modal Styling */
+/* ------------------ */
+#edit-card-form {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.new-card-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(200, 201, 165);
+    border: 1px solid rgb(255,156,0);
+    border-radius: 25px;
+    height: 450px;
+    width: 40%;
+}
+.submitCard {
+    width: 200px;
+    color: black;
+}
+.modify-field > input {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 25px;
+    width: 100%;
+    font-family: 'Heavyweight Regular';
+    text-align: center;
+}
+.modify-field > select {
+    background-color: rgb(200, 201, 165);
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    height: 25px;
+    width: 100%;
+}
+.submit {
+    width: 150px;
+}
+.submit:disabled {
+    box-shadow: 0px 0px 0px;
+    cursor: default
+}
+.modify-field {
+    padding: 4px;
 }

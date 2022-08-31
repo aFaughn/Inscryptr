@@ -91,90 +91,114 @@ const CardDetails = () => {
         setErrors(errors);
     }, [name, cost, description, tribe])
 
+
+    // Close Edit Card Modal //////////////////////////////
+    function closeModal(e) {
+        e.preventDefault()
+        setFormVisible(false)
+    }
+
     // JSX ////////////////////////////////////////////////////////////
     return (
-    <div id='cardDetailsWrapper'>
-
-        <div className='card-details'>
-            {cards.map((card) => (
-                <>
-                <img id='detailImg' src={card.imageUrl}></img>
-                <ul key={card.id} id='details-container'>
-                    <li id='card-name' className='card-li'>{card.name}</li>
-                    <li id='card-cost' className='card-li'>{card.costType === 'blood' ? '🩸'.repeat(card.cost) : '🦴'.repeat(card.cost)}</li>
-                    <li id='description' className='card-li'>Description: {card.description}</li>
-                    <div className='card-tiny-details'>
-                        <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
-                        <li className='card-li'>Tribe: {card.tribeId}</li>
+    <>
+        <div id='cardDetailsWrapper'>
+            <div className='card-details'>
+                {cards.map((card) => (
+                    <>
+                    <img id='detailImg' src={card.imageUrl}></img>
+                    <ul key={card.id} id='details-container'>
+                        <li id='card-name' className='card-li'>{card.name}</li>
+                        <li id='card-cost' className='card-li'>{card.costType === 'blood' ? '🩸'.repeat(card.cost) : '🦴'.repeat(card.cost)}</li>
+                        <li id='description' className='card-li'>Description: {card.description}</li>
+                        <div className='card-tiny-details'>
+                            <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
+                            <li className='card-li'>Tribe: {card.tribeId}</li>
+                        </div>
+                    </ul>
+                    </>
+                    ))}
+            </div>
+            <div id='detail-buttons'>
+                <div><button className='delete' onClick={handleClick}>Delete This Card?</button></div>
+                <div><button className='reveal' onClick={showForm}>Edit This Card</button></div>
+            </div>
+        </div>
+            { formVisible && (
+            <div id='edit-card-form' className='form'>
+                <form
+                className='new-card-form'
+                onSubmit={onSubmit}>
+                    <ul className='errors'>
+                        {errors.map(error => (
+                            <li key={error}>{error}</li>
+                            ))}
+                    </ul>
+                    <input type='hidden' name='_csrf'></input>
+                    <div className='inputFields'>
+                        <div className='modify-field'>
+                            <label>Enter a name</label>
+                            <input
+                            type='text'
+                            name='name'
+                            value={name}
+                            onChange={((e) => setName(e.target.value))}>
+                            </input>
+                        </div>
+                        <div className='modify-field'>
+                            <label>Enter a cost</label>
+                            <input
+                            type='number'
+                            name='cost'
+                            value={cost}
+                            onChange={(e) => setCost(e.target.value)}
+                            ></input>
+                        </div>
+                        <div className='modify-field'>
+                            <label>Cost Type</label>
+                            <select
+                            value={costType}
+                            onChange={(e) => setCostType(e.target.value)}>
+                                <option value='blood'>Blood</option>
+                                <option value='bones'>Bones</option>
+                                <option value='energy'>Energy</option>
+                            </select>
+                        </div>
+                        <div className='modify-field'>
+                            <label>Tribe</label>
+                            <select
+                            value={tribe}
+                            onChange={(e) => setTribe(e.target.value)}>
+                                <option disabled >Select Tribe...</option>
+                                {tribes.map(tribe => (
+                                    <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
+                                    ))}
+                            </select>
+                        </div>
+                        <div className='modify-field'>
+                            <label>Image URL</label>
+                            <input
+                            type='text'
+                            value={image}
+                            name='image'
+                            onChange={(e) => setImage(e.target.value)}>
+                            </input>
+                        </div>
+                        <div className='modify-field'>
+                            <label>Description</label>
+                            <input
+                            type='text'
+                            value={description}
+                            name='description'
+                            onChange={(e)=>setDescription(e.target.value)}></input>
+                        </div>
                     </div>
-                </ul>
-                </>
-                ))}
-        </div>
-        <div id='detail-buttons'>
-            <div><button className='delete' onClick={handleClick}>Delete This Card?</button></div>
-            <div><button className='reveal' onClick={showForm}>Edit This Card</button></div>
-        </div>
-        { formVisible && (
-        <div className='form'>
-            <form
-            className='new-card-form'
-            onSubmit={onSubmit}>
-                <ul className='errors'>
-                    {errors.map(error => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-                <input type='hidden' name='_csrf'></input>
-                <label>Enter a name</label>
-                <input
-                type='text'
-                name='name'
-                value={name}
-                onChange={((e) => setName(e.target.value))}>
-                </input>
-                <label>Enter a cost</label>
-                <input
-                type='number'
-                name='cost'
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                ></input>
-                <label>Cost Type</label>
-                <select
-                value={costType}
-                onChange={(e) => setCostType(e.target.value)}>
-                    <option value='blood'>Blood</option>
-                    <option value='bones'>Bones</option>
-                    <option value='energy'>Energy</option>
-                </select>
-                <label>Tribe</label>
-                <select
-                value={tribe}
-                onChange={(e) => setTribe(e.target.value)}>
-                    <option disabled >Select Tribe...</option>
-                    {tribes.map(tribe => (
-                        <option key={tribe.id} value={tribe.id}>{tribe.title}</option>
-                    ))}
-                </select>
-                <label>Image URL</label>
-                <input
-                type='text'
-                value={image}
-                name='image'
-                onChange={(e) => setImage(e.target.value)}>
-                </input>
-                <label>Description</label>
-                <input
-                type='text'
-                value={description}
-                name='description'
-                onChange={(e)=>setDescription(e.target.value)}></input>
-                <button className='submit' type='submit' disabled={!!errors.length}>Update</button>
-            </form>
-        </div>
-        )}
-    </div>
+                    <div id='buttons'>
+                        <button onClick={closeModal} className='submit'>Cancel</button><button className='submit' type='submit' disabled={!!errors.length}>Update</button>
+                    </div>
+                </form>
+            </div>
+            )}
+    </>
 )
 }
 
