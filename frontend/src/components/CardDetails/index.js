@@ -4,6 +4,7 @@ import {getOneCard} from '../../store/cards';
 import {useParams, useHistory} from 'react-router-dom';
 import { deleteOneCard, editOneCard } from '../../store/cards';
 import {getAllTribes} from '../../store/tribes';
+import HandleCostType from './HandleCostType';
 import './index.css';
 
 const CardDetails = () => {
@@ -18,7 +19,7 @@ const CardDetails = () => {
     const [cost, setCost] = useState(0);
     const [costType, setCostType] = useState('blood');
     const [tribe, setTribe] = useState(0);
-    const [image, setImage] = useState('https://i.imgur.com/lJrAYOk.png');
+    const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
     const [formVisible, setFormVisible] = useState(false)
@@ -98,6 +99,7 @@ const CardDetails = () => {
         setFormVisible(false)
     }
 
+
     // JSX ////////////////////////////////////////////////////////////
     return (
     <>
@@ -105,10 +107,10 @@ const CardDetails = () => {
             <div className='card-details'>
                 {cards.map((card) => (
                     <>
-                    <img id='detailImg' src={card.imageUrl}></img>
+                    <img onError={(e) => e.target.src = 'https://i.imgur.com/lJrAYOk.png'} id='detailImg' alt='card Art' src={card.imageUrl}></img>
                     <ul key={card.id} id='details-container'>
                         <li id='card-name' className='card-li'>{card.name}</li>
-                        <li id='card-cost' className='card-li'>{card.costType === 'blood' ? '🩸'.repeat(card.cost) : '🦴'.repeat(card.cost)}</li>
+                        <li id='card-cost' className='card-li'><HandleCostType card={card}/></li>
                         <li id='description' className='card-li'>Description: {card.description}</li>
                         <div className='card-tiny-details'>
                             <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
@@ -136,7 +138,7 @@ const CardDetails = () => {
                     <input type='hidden' name='_csrf'></input>
                     <div className='inputFields'>
                         <div className='modify-field'>
-                            <label>Enter a name</label>
+                            <label>Enter a name *</label>
                             <input
                             type='text'
                             name='name'
@@ -145,7 +147,7 @@ const CardDetails = () => {
                             </input>
                         </div>
                         <div className='modify-field'>
-                            <label>Enter a cost</label>
+                            <label>Enter a cost *</label>
                             <input
                             type='number'
                             name='cost'
@@ -154,7 +156,7 @@ const CardDetails = () => {
                             ></input>
                         </div>
                         <div className='modify-field'>
-                            <label>Cost Type</label>
+                            <label>Cost Type *</label>
                             <select
                             value={costType}
                             onChange={(e) => setCostType(e.target.value)}>
@@ -164,7 +166,7 @@ const CardDetails = () => {
                             </select>
                         </div>
                         <div className='modify-field'>
-                            <label>Tribe</label>
+                            <label>Tribe *</label>
                             <select
                             value={tribe}
                             onChange={(e) => setTribe(e.target.value)}>

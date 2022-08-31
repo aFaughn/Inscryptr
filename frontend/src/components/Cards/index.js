@@ -23,7 +23,7 @@ const Cards = () => {
                 <Link className='create-new-card' to='/cards/new'><img alt='addNewCard' src='https://i.imgur.com/hpG52bc.png'></img></Link>
                 {cards.map((card) => (
                     <div className='card' key={card.id}>
-                        <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' src={card.imageUrl}></img></Link>
+                        <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' onError={(e) => e.target.src = 'https://i.imgur.com/lJrAYOk.png'} src={card.imageUrl}></img></Link>
                     </div>
                 ))}
                 </div>
