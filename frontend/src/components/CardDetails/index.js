@@ -28,7 +28,6 @@ const CardDetails = () => {
     useEffect(() => {
         dispatch(getOneCard(cardId))
         dispatch(getAllTribes())
-        setFormVisible(false);
     },[dispatch, cardId])
 
     //Handles delete button click
@@ -40,8 +39,10 @@ const CardDetails = () => {
     //Displays the form to edit the card.
     const showForm = () => {
         if (formVisible === false) {
+            console.log('Making form visible')
             setFormVisible(true);
         } else {
+            console.log('Hiding form')
             setFormVisible(false);
         }
     }
@@ -92,24 +93,31 @@ const CardDetails = () => {
 
     // JSX ////////////////////////////////////////////////////////////
     return (
-    <>
+    <div id='cardDetailsWrapper'>
 
         <div className='card-details'>
             {cards.map((card) => (
-                <ul key={card.id}>
-                    <li className='card-li'>Name: {card.name}</li>
-                    <li className='card-li'>Cost: {card.cost} {card.costType}</li>
-                    <li className='card-li'>Description: {card.description}</li>
-                    <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
-                    <li className='card-li'>Tribe: {card.tribeId}</li>
+                <>
+                <img id='detailImg' src={card.imageUrl}></img>
+                <ul key={card.id} id='details-container'>
+                    <li id='card-name' className='card-li'>{card.name}</li>
+                    <li id='card-cost' className='card-li'>{card.costType === 'blood' ? '🩸'.repeat(card.cost) : '🦴'.repeat(card.cost)}</li>
+                    <li id='description' className='card-li'>Description: {card.description}</li>
+                    <div className='card-tiny-details'>
+                        <li className='card-li'>Created: {card.createdAt.slice(0,10)}</li>
+                        <li className='card-li'>Tribe: {card.tribeId}</li>
+                    </div>
                 </ul>
+                </>
                 ))}
         </div>
-        <div><button className='delete' onClick={handleClick}>Delete This Card?</button></div>
-        <div><button className='reveal' onClick={showForm}>Edit This Card</button></div>
-        <div hidden={formVisible} className='form'>
+        <div id='detail-buttons'>
+            <div><button className='delete' onClick={handleClick}>Delete This Card?</button></div>
+            <div><button className='reveal' onClick={showForm}>Edit This Card</button></div>
+        </div>
+        { formVisible && (
+        <div className='form'>
             <form
-            hidden={formVisible}
             className='new-card-form'
             onSubmit={onSubmit}>
                 <ul className='errors'>
@@ -165,7 +173,8 @@ const CardDetails = () => {
                 <button className='submit' type='submit' disabled={!!errors.length}>Update</button>
             </form>
         </div>
-    </>
+        )}
+    </div>
 )
 }
 
