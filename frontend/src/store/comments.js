@@ -45,70 +45,53 @@ export const getAllComments = () => async (dispatch) => {
     }
 }
 
-export const createNewCard = (card) => async (dispatch) => {
-    const response = await csrfFetch(`/api/cards`, {
+export const createNewComment = (comment) => async (dispatch) => {
+    const response = await csrfFetch(`/api/comments`, {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
-        body: JSON.stringify(card)
+        body: JSON.stringify(comment)
     })
     if (response.ok) {
-        const cards = await response.json();
-        await dispatch(createCard(card))
-        return cards;
+        const comments = await response.json();
+        await dispatch(createComment(comment))
+        return comments;
     }
 }
 
-export const editOneCard = (card) => async (dispatch) => {
-    const response = await csrfFetch(`/api/cards/${card.id}`, {
-        method: 'PUT',
+export const editOneComment = (comment) => async (dispatch) => {
+    const response = await csrfFetch(`/api/comments/${comment.id}`, {
+        method: 'PATCH',
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(card)
+        body: JSON.stringify(comment)
     })
 
     if (response.ok) {
-        const cards = await response.json();
-        dispatch(editCard(cards))
-        return card;
+        const comment = await response.json();
+        dispatch(editComment(comment))
+        return comment;
     }
 }
 
-export const deleteOneCard = (card) => async (dispatch) => {
-    const response = await csrfFetch(`/api/cards/${card}`, {
+export const deleteOneComment = (comment) => async (dispatch) => {
+    const response = await csrfFetch(`/api/comment/${comment.id}`, {
         method: 'DELETE',
     })
-
     if (response.ok) {
-        const cards = await response.json();
-        dispatch(deleteCard())
-        console.log(cards);
+        dispatch(deleteComment())
     } else {
-        console.log('Well ____ ... uh oh.')
+        console.log('Failed to delete comment')
     }
 }
-
-export const getCardsByTribeId = (tribeId) => async (dispatch) => {
-    const response = await fetch(`/api/tribes/${tribeId}/cards`)
-
-    if (response.ok) {
-        const cards = await response.json();
-        dispatch(getTribecards(cards))
-        return response
-    } else {
-        return await response.json()
-    }
-}
-
-
 // Reducer
 
 const InitialState = {
-    cards: []
+    comments: []
 }
 
-const cardReducer = (state = InitialState, action) => {
+const commentReducer = (state = InitialState, action) => {
     switch (action.type) {
         case LOAD_COMMENT: return {
-        ...state, cards: [...action.cards]
+        ...state, cards: [...action.comments]
         }
         case CREATE_COMMENT: return {
             ...state
@@ -124,4 +107,4 @@ const cardReducer = (state = InitialState, action) => {
     }
 }
 
-export default cardReducer;
+export default commentReducer;

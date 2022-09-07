@@ -8,7 +8,8 @@ import tribeReducer from './tribes';
 const rootReducer = combineReducers({
   session: sessionReducer,
   cards: cardReducer,
-  tribes: tribeReducer
+  tribes: tribeReducer,
+  comments: commentReducer
 });
 
 let enhancer;
