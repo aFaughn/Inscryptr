@@ -14,7 +14,7 @@ const Cards = () => {
         dispatch(getAllCards())
     },[dispatch])
     return (
-        <div id='/cards'>
+        <div id='cardsRoute'>
             <div id='searchComponentWrapper'>
                 <CardSearch/>
             </div>

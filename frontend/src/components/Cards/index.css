@@ -47,3 +47,7 @@ body {
 .Cards-Container {
     margin-top: 50px;
 }
+#cardsRoute {
+    margin-left: 10%;
+    margin-right: 10%;
+}
