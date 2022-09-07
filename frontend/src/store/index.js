@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import cardReducer from './cards';
 import tribeReducer from './tribes';
+import commentReducer from './comments';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
