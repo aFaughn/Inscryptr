@@ -3,9 +3,28 @@ import {useEffect} from 'react';
 import {getAllComments} from '../../store/comments';
 import './index.css'
 
-function Comments(id) {
+function Comments({id}) {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getAllComments())
+    },[dispatch])
+
+    const comments = useSelector(state => state.comments.comments)
+
+
     return (
-        <h1>Hello from Comments</h1>
+        <div id='comments-component-wrapper'>
+            <h1>Comments</h1>
+            {comments.map(comment => (
+                <>
+                <div>
+                    <p>{comment.userId}</p>
+                    <p>{comment.comment}</p>
+                </div>
+                </>
+            ))}
+        </div>
     )
 }
 

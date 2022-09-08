@@ -5,6 +5,7 @@ import {useParams, useHistory} from 'react-router-dom';
 import { deleteOneCard, editOneCard } from '../../store/cards';
 import {getAllTribes} from '../../store/tribes';
 import HandleCostType from './HandleCostType';
+import Comments from '../Comments';
 import './index.css';
 
 const CardDetails = () => {
@@ -200,6 +201,9 @@ const CardDetails = () => {
                 </form>
             </div>
             )}
+            <div>
+                <Comments id={cardId}/>
+            </div>
     </>
 )
 }

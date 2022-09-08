@@ -9,8 +9,9 @@ const {setTokenCookie} = require('../../utils/auth')
 //Get All Comments
 router.get('/', asyncHandler(async(req,res) => {
     const comments = await Comment.findAll({
-        order: [['userId']]
+        order: [['createdAt', 'DESC']]
     });
+    console.log('HELLO FROM GET ALL COMMENTS')
     return res.json(comments)
 }))
 

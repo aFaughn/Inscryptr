@@ -91,7 +91,7 @@ const InitialState = {
 const commentReducer = (state = InitialState, action) => {
     switch (action.type) {
         case LOAD_COMMENT: return {
-        ...state, cards: [...action.comments]
+        ...state, comments: [...action.comments]
         }
         case CREATE_COMMENT: return {
             ...state
