@@ -29,7 +29,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
 
 
 //Submit changes to card
-router.put('/:id(\\d+)', asyncHandler(async(req,res) => {
+router.patch('/:id(\\d+)', asyncHandler(async(req,res) => {
     const details = {
         cost,
         costType,

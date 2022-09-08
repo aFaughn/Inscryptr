@@ -8,6 +8,7 @@ module.exports = {
         {userId: 1, name: 'Squirrel', tribeId: null, imageUrl: 'https://i.imgur.com/HyA9pJ7.png', cost: 0, costType:'blood', description:'Squirrels are a resource card. They are free to play and you may draw one every turn. They sole purpose is in that of utility.', createdAt: new Date(), updatedAt: new Date()},
         {userId: 1, name: 'OuroBoros', tribeId: 3, imageUrl: 'https://i.imgur.com/JY1xJo2.png', cost: 2, costType:'blood', description:'The Ouroboros is a rare card that when defeated, is returned to the players hand with +1 to it\'s strength and health permanently' , createdAt: new Date(), updatedAt: new Date()},
         {userId: 1, name: 'Raven', tribeId: 2, imageUrl: 'https://i.imgur.com/16ccBX1.png', cost: 2, costType:'blood', description:'The Raven is a flyer that can attack the opposing player directly despite having a facing card without the "mighty leap" sigil', createdAt: new Date(), updatedAt: new Date()},
+        {userId: 1, name: 'Mantis God', tribeId: 4, imageUrl: 'https://i.imgur.com/hpnuw5w.png', cost: 1, costType:'blood', description:'The Mantis God is one of the most powerful cards in Inscryption. Despite it\'s lackluster attack and hp stats, the Mantis God can quickly crush any opposition with a quick visit to a damage campfire and a fecundity or undying sigil.', createdAt: new Date(), updatedAt: new Date()},
       ], {});
   },
 
