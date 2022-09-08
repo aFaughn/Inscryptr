@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import { createNewComment } from '../../store/comments';
+import { createNewComment, getAllComments } from '../../store/comments';
 import './index.css'
 
 function CreateComment({cardId}) {
@@ -18,7 +18,7 @@ function CreateComment({cardId}) {
             cardId
         }
         await dispatch(createNewComment(comment))
-        .then(history.push('/'))
+        dispatch(getAllComments())
     }
 
 

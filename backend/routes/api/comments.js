@@ -63,7 +63,7 @@ router.delete('/:id', asyncHandler(async(req,res) => {
     const id = req.params.id
     const comment = await Comment.findByPk(id);
     if (comment) {
-        await card.destroy();
+        await comment.destroy();
         return res.json({"message":"Deleted Succesfully"})
     } else {
         return res.json({"message":"Error thrown in backend at routes/api/comments.js @ Delete Comment"})
