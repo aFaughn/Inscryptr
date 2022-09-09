@@ -27,14 +27,17 @@ router.get('/:userId(\\d+)', asyncHandler(async(req,res) => {
 
 //Submit changes to comment
 router.patch('/:id(\\d+)', asyncHandler(async(req,res) => {
-    const details = {
+    const {
         userId,
         cardId,
         comment
     } = req.body
 
-    const comment = await Comment.findByPk(id);
-    await comment.update({
+    console.log(userId, cardId, comment)
+
+
+    const commentModel = await Comment.findByPk(req.params.id);
+    await commentModel.update({
         userId: userId,
         cardId: cardId,
         comment: comment
