@@ -29,7 +29,7 @@ function CreateComment({cardId}) {
         method=''>
             <label>Write a comment</label>
             <textarea id='new-comment-textarea' onChange={(e) => setCommentBody(e.target.value)}></textarea>
-            <button onClick={handleClick} type='submit'>Submit</button>
+            <button disabled={!commentBody.length} onClick={handleClick} type='submit'>Submit</button>
         </form>
     )
 }

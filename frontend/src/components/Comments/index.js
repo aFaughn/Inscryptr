@@ -53,7 +53,7 @@ function Comments({id}) {
             <CreateComment cardId={id}/>
             {comments.map(comment => (
                 <>
-                <div key={comment.id}>
+                <div className='comment-container' key={comment.id}>
                     <p>{comment.userId}</p>
                     <p>{showEdit && comment.id === commentId ? <textarea value={commentBody} onChange={(e) => setCommentBody(e.target.value)}></textarea> : comment.comment}</p>
                     {showEdit && comment.id === commentId ? <button onClick={(e) => submitEdit(e, comment.id)}>Update</button> : <></>}
