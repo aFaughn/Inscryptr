@@ -9,8 +9,9 @@ const {setTokenCookie} = require('../../utils/auth')
 //Get All Comments
 router.get('/', asyncHandler(async(req,res) => {
     const comments = await Comment.findAll({
-        order: [['userId']]
+        order: [['createdAt', 'DESC']]
     });
+    console.log('HELLO FROM GET ALL COMMENTS')
     return res.json(comments)
 }))
 
@@ -26,14 +27,17 @@ router.get('/:userId(\\d+)', asyncHandler(async(req,res) => {
 
 //Submit changes to comment
 router.patch('/:id(\\d+)', asyncHandler(async(req,res) => {
-    const details = {
+    const {
         userId,
         cardId,
         comment
     } = req.body
 
-    const comment = await Comment.findByPk(id);
-    await comment.update({
+    console.log(userId, cardId, comment)
+
+
+    const commentModel = await Comment.findByPk(req.params.id);
+    await commentModel.update({
         userId: userId,
         cardId: cardId,
         comment: comment
@@ -62,7 +66,7 @@ router.delete('/:id', asyncHandler(async(req,res) => {
     const id = req.params.id
     const comment = await Comment.findByPk(id);
     if (comment) {
-        await card.destroy();
+        await comment.destroy();
         return res.json({"message":"Deleted Succesfully"})
     } else {
         return res.json({"message":"Error thrown in backend at routes/api/comments.js @ Delete Comment"})

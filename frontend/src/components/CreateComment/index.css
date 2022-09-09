@@ -1,0 +1,27 @@
+#new-comment-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+#new-comment-textarea {
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgb(175, 165, 121);
+    height: 150px;
+    font-family: arial;
+    font-size: 18px;
+    padding: 5px;
+}
+#new-comment-form > button {
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#new-comment-form > label {
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
