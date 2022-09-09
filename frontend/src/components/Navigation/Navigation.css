@@ -12,11 +12,13 @@ a {
     color: rgb(255,106,0);
 }
 a:hover {
-    text-shadow: 0px 0px 10px orange;
+    text-shadow: 0px 0px 10px rgb(255,106,0);
+    transition: .5s linear;
 }
 li {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
 }
 button {
@@ -29,7 +31,7 @@ button {
     font-size: 20px;
 }
 button:hover {
-    box-shadow: 0px 0px 10px orange;
+    box-shadow: 0px 0px 5px orange;
     cursor: pointer;
 }
 .profile-dropdown {
@@ -39,4 +41,22 @@ button:hover {
 }
 .logout {
     width: 150px;
+}
+i {
+    height: 2px;
+}
+#profile-button {
+    height: 40px;
+    width: 40px;
+}
+#nav-container {
+    margin: 0px;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+body {
+    margin: 0px;
 }

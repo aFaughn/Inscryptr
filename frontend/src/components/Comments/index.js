@@ -43,6 +43,7 @@ function Comments({id}) {
         }
         await dispatch(editOneComment(payload))
         .then(setShowEdit(false))
+        .then(e.target.value = '')
         .then(dispatch(getAllComments()))
     }
 

@@ -42,7 +42,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
+    <ul id='nav-container'>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}

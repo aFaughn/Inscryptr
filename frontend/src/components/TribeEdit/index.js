@@ -43,12 +43,14 @@ const TribeEdit = () => {
             image,
         }
         console.log(payload);
-
-        let editTribe = await dispatch(editTribeThunk(payload));
-        setFormVisible(false);
-        if (editTribe) {
-            history.push(`/tribes`)
+        if (payload.image !== undefined) {
+            await dispatch(editTribeThunk(payload));
+        } else {
+            payload.image = 'https://i.imgur.com/lJrAYOk.png'
+            await dispatch(editTribeThunk(payload));
         }
+        setFormVisible(false);
+        history.push(`/tribes`)
     }
 
     //Form Validations /////////////////////////////////////////////////
@@ -80,13 +82,15 @@ const TribeEdit = () => {
             hidden={formVisible}
             className='edit-tribe-form'
             onSubmit={onSubmit}>
-                <ul className='errors'>
+                <div id='errors-container'>
+                { !!errors.length && (<ul className='errors'>
                     {errors.map(error => (
                         <li key={error}>{error}</li>
-                    ))}
-                </ul>
+                        ))}
+                </ul>)}
+                </div>
                 <input type='hidden' name='_csrf'></input>
-                <label>Enter a name</label>
+                <label id='lolololol'>Enter a name</label>
                 <input
                 type='text'
                 name='name'
@@ -100,7 +104,7 @@ const TribeEdit = () => {
                 name='image'
                 onChange={(e) => setImage(e.target.value)}>
                 </input>
-                <button type='submit' className='delete' disabled={!!errors.length}>Update</button>
+                <button type='submit' id='submitTribeEdit' disabled={!!errors.length}>Update</button>
                 </form>
         </div>
     </>

@@ -18,6 +18,7 @@ function CreateComment({cardId}) {
             cardId
         }
         await dispatch(createNewComment(comment))
+        .then(setCommentBody(''))
         dispatch(getAllComments())
     }
 
@@ -27,8 +28,7 @@ function CreateComment({cardId}) {
         id='new-comment-form'
         action='POST'
         method=''>
-            <label>Write a comment</label>
-            <textarea id='new-comment-textarea' onChange={(e) => setCommentBody(e.target.value)}></textarea>
+            <textarea id='new-comment-textarea' placeholder={'Click here and start typing'}value={commentBody} onChange={(e) => setCommentBody(e.target.value)}></textarea>
             <button disabled={!commentBody.length} onClick={handleClick} type='submit'>Submit</button>
         </form>
     )

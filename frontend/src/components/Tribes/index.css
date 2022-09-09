@@ -9,32 +9,53 @@
 }
 .create-new-tribe:hover {
     box-shadow: 0px 0px 10px rgb(255,156,0);
+    margin-top: -10px;
+    transition: .25s linear;
 }
 .tribe {
     width: 190px;
     height: 300px;
     font-size: 28px;
     margin-bottom: 0px;
+    margin-left: 5px;
 }
 .tribeArt {
     width: 190px;
     height: 300px;
-    margin-left: -10px;
     margin-top: -27px;
     background-color: white;
 }
 .tribe:hover {
     box-shadow: 1px 0px 10px orange;
+    margin-top: -10px;
+    transition: .25s linear;
 }
 .tribe-wrapper {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 .edit {
-    margin-top: -10px;
-    z-index: 10;
+    margin-top: -40px;
+    color: black;
+    z-index: -1;
     width: 60px;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+}
+.edit > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;;
+    background-color: rgba(100,100,100,0.5);
+    width:55px;
+    height: 35px;
+}
+.edit > a:hover {
+    box-shadow: 0px 0px rgb(255, 156, 0);
 }
 @font-face {
     font-family: 'Heavyweight Regular';
