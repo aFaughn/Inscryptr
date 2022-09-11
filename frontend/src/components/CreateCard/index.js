@@ -76,9 +76,11 @@ const CreateCard = () => {
 
     return (
         <>
-        <div className='form-wrapper'><form
-        className='new-card-form'
-        onSubmit={onSubmit}>
+        <div className='form-wrapper'>
+            <form
+            className='new-card-form'
+            id='new-card-form'
+            onSubmit={onSubmit}>
             <ul className='errors'>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
@@ -107,6 +109,7 @@ const CreateCard = () => {
                 <option value='bones'>Bones</option>
                 <option value='energy'>Energy</option>
             </select>
+            <label>Tribe</label>
             <select
             value={tribe}
             onChange={(e) => setTribe(e.target.value)}>
@@ -128,7 +131,8 @@ const CreateCard = () => {
             value={description}
             name='description'
             onChange={(e)=>setDescription(e.target.value)}></input>
-            <button className='submitCard' type='submit' disabled={!!errors.length}>Create New Card</button>
+            <p id='art-generator'>Need card art? Try <a href='https://generator.cards'>generator.cards</a></p>
+            <button id='submit-new-card' className='submitCard' type='submit' disabled={!!errors.length}>Create New Card</button>
         </form>
         </div>
         </>

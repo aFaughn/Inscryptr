@@ -22,13 +22,13 @@ const TribeCollection = () => {
     return (
         <div>
             <div className='Cards-Container'>
-                <h1 className='collection-header'>{`Cards Belonging to the Tribe: ${tribes.map(tribe => (tribe.title))}`}</h1><Link to='/tribes'><p className='go-back'>Back</p></Link>
-                <div className='cards-wrapper'>
+                <h1 className='collection-header'>{`Cards Belonging to the Tribe: ${tribes.map(tribe => (tribe.title))}`}</h1><Link to='/tribes'><p className='go-back'>Back to Tribes</p></Link>
+                <div className='tribe-cards-wrapper'>
                 {cards.map((card) => (
-                    <div className='card' key={card.id}>
-                        {`${card.name}, ${card.cost} ${card.costType}`}
-                        <Link to={`/cards/${card.id}`}><img alt={card.name} className='cardArt' src={card.imageUrl}></img></Link>
-                        <div className='edit'><Link to={`/cards/${card.id}`}>Edit</Link></div>
+                    <div id='tribe-specific-card' className='card' key={card.id}>
+                        <Link to={`/cards/${card.id}`}>
+                            <img alt={card.name} id='tribe-card-art' className='cardArt' src={card.imageUrl}></img>
+                        </Link>
                     </div>
                 ))}
                 </div>

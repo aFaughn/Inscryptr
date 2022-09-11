@@ -1,6 +1,19 @@
 .collection-header {
     color: rgb(255,106,0);
+    display: flex;
+    justify-content: center;
 }
 .go-back {
     font-size: 30px;
+    text-align:center;
+}
+#tribe-specific-card > img {
+    margin-bottom: 5px;
+}
+.tribe-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 15%;
+    margin-right: 15%;
 }

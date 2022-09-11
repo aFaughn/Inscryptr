@@ -71,13 +71,14 @@ const TribeEdit = () => {
         <div className='tribe-details'>
             {tribes.map((tribe) => (
                 <ul key={tribe.id}>
-                    <li className='tribe-li'>Title: {tribe.title}</li>
-                    <li className='tribe-li'>Icon: {tribe.tribeIcon}</li>
+                    <img alt='tribe-icon' id='detailImg' src={tribe.tribeIcon}/>
+                    <li className='tribe-li'>{tribe.title} tribe</li>
                 </ul>
                 ))}
         </div>
-        <div><button className='edit-tribe' onClick={showForm}>Edit This Tribe</button></div>
-        <div hidden={formVisible} className='form'>
+        <div id='edit-tribe-button-container'><button className='edit-tribe' onClick={showForm}>Edit This Tribe</button></div>
+        {formVisible && (
+        <div className='form'>
             <form
             hidden={formVisible}
             className='edit-tribe-form'
@@ -107,6 +108,7 @@ const TribeEdit = () => {
                 <button type='submit' id='submitTribeEdit' disabled={!!errors.length}>Update</button>
                 </form>
         </div>
+        )}
     </>
 )
 }

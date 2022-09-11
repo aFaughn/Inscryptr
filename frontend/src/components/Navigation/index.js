@@ -1,25 +1,30 @@
-import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('Leshy')
   const [password, setPassword] = useState('password')
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.login({ credential, password }))
+      dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
   }
+
+  useEffect(() => {
+    if (sessionUser) history.push('/cards')
+  },[sessionUser])
 
 
   let sessionLinks;

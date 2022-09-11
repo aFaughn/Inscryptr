@@ -1,20 +1,43 @@
-.new-card-form {
-    background-color: rgb(200, 201, 165);
-    border: 5px solid rgb(255,156,0);
-}
 .submitCard {
     width: 200px;
     color: black;
 }
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 700px;
+}
+.new-card-form {
+    background-color: rgb(200, 201, 165);
+    border: 5px solid rgb(255,156,0);
+    font-size: 26px;
+}
+#new-card-form {
+    height: 600px;
+}
 .new-card-form > input {
     background-color: rgb(200, 201, 165);
-    border-radius: 5px;
-    border: 1px solid black;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 18px;
+    width: 220px;
+}
+.new-card-form > input:focus {
+    outline: none;
 }
 .new-card-form > select {
     background-color: rgb(200, 201, 165);
     border-radius: 5px;
     border: 1px solid black;
+    margin-bottom: 10px;
+    width: 220px;
+    height: 30px;
+    text-align: center;
+}
+.new-card-form > option {
+    height: 30px;
 }
 .card-details {
     background-color:rgb(200, 201, 165);
@@ -41,5 +64,22 @@
     width: 200px;
 }
 .reveal {
+    width: 200px;
+}
+.errors {
+    height: 50px;
+    background-color: none;
+}
+.errors > ul {
+    background-color: none;
+}
+#submit-new-card:disabled {
+    background-color: gray;
+    color: #555;
+    box-shadow: none;
+    border: none;
+}
+#art-generator {
+    font-size: 14px;
     width: 200px;
 }

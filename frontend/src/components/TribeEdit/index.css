@@ -24,7 +24,6 @@
     text-align: left;
 }
 .tribe-li {
-    text-align: left;
     display: flex;
     justify-content: left;
 }
@@ -58,6 +57,7 @@
     background-color:rgb(200, 201, 165);
     border: 5px solid rgb(44, 44, 44);
     border-radius: 5px;
+    height: 400px;
 }
 .tribe-details > ul {
     display: flex;
@@ -117,4 +117,8 @@
     align-items: center;
     background-color: none;
     text-align: center;
+}
+#edit-tribe-button-container {
+    display: flex;
+    justify-content: center;
 }

@@ -34,7 +34,7 @@ function ProfileButton({ user }) {
         <i className="fa-solid fa-user"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul id='profile-dropdown' className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
