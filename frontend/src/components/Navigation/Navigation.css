@@ -100,3 +100,29 @@ body {
     text-shadow: 0px 0px 10px rgb(255,106,0);
     transition: .5s linear;
 }
+#errors {
+    height: 100px;
+    color: red;
+    animation: errorGlow;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+#errors > ul > li {
+    animation: showErrors 0.25s, bounceErrors 1s infinite;
+}
+@keyframes errorGlow {
+    0% {text-shadow: none;}
+    50% {text-shadow: 0px 0px 2px rgb(247, 74, 74);}
+    100% {text-shadow: none;}
+}
+
+/* Bouncing text certainly has some accessibility concerns but I'm just experimenting with animations. :) */
+@keyframes bounceErrors {
+    0% {margin-bottom: 0px;}
+    50% {margin-bottom: 5px;}
+    100% {margin-bottom: 0px;}
+}
+@keyframes showErrors {
+    0% {color: rgb(200,201,165)}
+    100% {color: red};
+}
