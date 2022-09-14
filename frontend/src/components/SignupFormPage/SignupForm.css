@@ -1,13 +1,27 @@
 .signup-form {
     background-color: rgb(200,201,165);
     border-radius: 10px;
+    height: 50%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 22px;
 }
 .signup-form > button {
     width: 150px;
 }
-.signup-form > label > input {
+.signup-form > input {
     height: 25px;
-    border-radius: 5px;
-    font-size: 15px;
+    font-size: 20px;
     border: 1px solid black;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgb(104, 105, 83);
+    text-align: center;
+}
+.signup-form > input:focus {
+    outline: none;
 }
