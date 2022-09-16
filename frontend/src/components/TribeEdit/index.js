@@ -67,46 +67,50 @@ const TribeEdit = () => {
     // JSX ////////////////////////////////////////////////////////////
     return (
     <>
-
-        <div className='tribe-details'>
-            {tribes.map((tribe) => (
-                <ul key={tribe.id}>
-                    <img alt='tribe-icon' id='detailImg' src={tribe.tribeIcon}/>
-                    <li className='tribe-li'>{tribe.title} tribe</li>
-                </ul>
-                ))}
+        <div id='tribe-detail-wrapper'>
+            <div className='tribe-details'>
+                {tribes.map((tribe) => (
+                    <ul id='tribe-detail-ul' key={tribe.id}>
+                        <img alt='tribe-icon' id='detailImg' src={tribe.tribeIcon}/>
+                        <li id='tribe-li'>{tribe.title} tribe</li>
+                    </ul>
+                    ))}
+            </div>
         </div>
         <div id='edit-tribe-button-container'><button className='edit-tribe' onClick={showForm}>Edit This Tribe</button></div>
         {formVisible && (
-        <div className='form'>
-            <form
-            hidden={formVisible}
-            className='edit-tribe-form'
-            onSubmit={onSubmit}>
-                <div id='errors-container'>
-                { !!errors.length && (<ul className='errors'>
-                    {errors.map(error => (
-                        <li key={error}>{error}</li>
-                        ))}
-                </ul>)}
-                </div>
-                <input type='hidden' name='_csrf'></input>
-                <label id='lolololol'>Enter a name</label>
-                <input
-                type='text'
-                name='name'
-                value={name}
-                onChange={((e) => setName(e.target.value))}>
-                </input>
-                <label>Image URL</label>
-                <input
-                type='text'
-                value={image}
-                name='image'
-                onChange={(e) => setImage(e.target.value)}>
-                </input>
-                <button type='submit' id='submitTribeEdit' disabled={!!errors.length}>Update</button>
-                </form>
+        <div id='form-bg-div'>
+            <div id='edit-tribe-form-container' className='form'>
+                <form
+                hidden={formVisible}
+                className='edit-tribe-form'
+                onSubmit={onSubmit}>
+                    <div id='errors-container'>
+                    { !!errors.length && (<ul className='errors'>
+                        {errors.map(error => (
+                            <li key={error}>{error}</li>
+                            ))}
+                    </ul>)}
+                    </div>
+                    <input type='hidden' name='_csrf'></input>
+                    <label id='lolololol'>Enter a name</label>
+                    <input
+                    type='text'
+                    name='name'
+                    value={name}
+                    onChange={((e) => setName(e.target.value))}>
+                    </input>
+                    <label>Image URL</label>
+                    <input
+                    type='text'
+                    value={image}
+                    name='image'
+                    onChange={(e) => setImage(e.target.value)}>
+                    </input>
+                    <button type='submit' id='submitTribeEdit' disabled={!!errors.length}>Update</button>
+                    <button id='submitTribeEdit' onClick={(e) => setFormVisible(false)}>Close</button>
+                    </form>
+            </div>
         </div>
         )}
     </>
