@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    align-items: center;
     padding-bottom: 10px;
     padding-top: 10px;
     height: 500px;
@@ -16,7 +17,7 @@
     width: 190px;
 }
 #details-container {
-    height: 280px;
+    height: 480px;
 }
 #detail-buttons {
     display: flex;
@@ -53,7 +54,8 @@
     height: 80px;
 }
 #description {
-    height: 106px;
+    height: 270px;
+    align-items: flex-start;
 }
 /* ------------------ */
 /* Form Modal Styling */
