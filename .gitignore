@@ -106,3 +106,4 @@ dist
 # My stuff
 .DS_Store
 build
+.env
