@@ -15,8 +15,8 @@ const Cards = () => {
     const flip3 = new Audio('/sound/cardflips/flip3.wav')
     const flip4 = new Audio('/sound/cardflips/flip4.wav')
     const flip5 = new Audio('/sound/cardflips/flip5.wav')
-    const flips = new Array()
-    flips.push(flip1, flip2, flip3)
+    const flips = []
+    flips.push(flip1, flip2, flip3, flip4, flip5)
     const GetRandomFlip = (max) => {
         return Math.floor(Math.random() * max)
     }
