@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, Link } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from './components/SplashPage';
@@ -55,9 +55,9 @@ function App() {
           {loggedIn ? <TribeEdit/> : <Redirect to='/' />}
           </Route>
           <Route>
-            <h1 style={{color: 'orangered'}}>error 404: Total Misplay</h1>
-            <br></br>
-            <div style={{border: 0}}><img style={{width: 400, height: 500 }} src='https://i.imgur.com/K3ofSsS.png' alt='stoat'></img></div>
+            <h1 id='bad_route_header'>error 404: Total Misplay</h1>
+            <Link to='/'><h1 id='bad_route_header'>◀ Go Back</h1></Link>
+            <div id='bad_route_wrapper'><img style={{width: 400, height: 600 }} src='https://i.imgur.com/oQCUo0E.png' alt='stoat'></img></div>
           </Route>
         </Switch>
       )}

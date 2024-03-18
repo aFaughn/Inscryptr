@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+.stoat_ascii {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+#bad_route_wrapper {
+    margin: 1%
+}
+#bad_route_header {
+    margin: 1%;
+    color: rgb(255,106,0);
+}

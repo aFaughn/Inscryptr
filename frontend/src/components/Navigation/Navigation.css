@@ -116,7 +116,6 @@ body {
     100% {text-shadow: none;}
 }
 
-/* Bouncing text certainly has some accessibility concerns but I'm just experimenting with animations. :) */
 @keyframes bounceErrors {
     0% {margin-bottom: 0px;}
     50% {margin-bottom: 5px;}

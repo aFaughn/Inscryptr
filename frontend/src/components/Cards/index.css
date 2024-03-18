@@ -45,7 +45,8 @@ a {
     z-index: 10;
 }
 body {
-    background-image: url('https://i.imgur.com/voixxYw.jpg');
+    background-image: url('https://i.imgur.com/OoHLNcf.png');
+    background-size: 100%;
 }
 #searchComponentWrapper {
     display: flex;
