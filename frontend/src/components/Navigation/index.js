@@ -49,9 +49,9 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <ProfileButton user={sessionUser} />
-      <NavLink to='/cards'>Cards</NavLink>
-      <NavLink to='/tribes'>Tribes</NavLink>
+      <li><ProfileButton user={sessionUser} /></li>
+      <li><NavLink to='/cards'>Cards</NavLink></li>
+      <li><NavLink to='/tribes'>Tribes</NavLink></li>
       </>
     );
   } else {
@@ -69,8 +69,8 @@ function Navigation({ isLoaded }){
       <ul id='nav-container'>
         <li>
           <NavLink exact to="/">Home</NavLink>
-          {isLoaded && sessionLinks}
         </li>
+          {isLoaded && sessionLinks}
       </ul>
       {showLogin && (
           <div id='modalBackground'>

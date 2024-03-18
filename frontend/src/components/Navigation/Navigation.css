@@ -1,12 +1,6 @@
 div {
     border: none;
 }
-#nav-container {
-    background-color: rgba(30,30,30,0.7);
-    font-size: 35px;
-    padding-top: 5px;
-    border-radius: 10px;
-}
 a {
     text-decoration: none;
     color: rgb(255,106,0);
@@ -17,9 +11,7 @@ a:hover {
 }
 li {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+
 }
 button {
     background-color: rgb(255,106,0);
@@ -62,12 +54,18 @@ i {
     width: 40px;
 }
 #nav-container {
+    background-color: rgba(30,30,30,0.7);
+    font-size: 35px;
     margin: 0px;
     margin-bottom: 10px;
-    border-radius: 0px;
-    padding: 0px;
+    padding-left: 25%;
+    padding-right: 25%;
     padding-top: 10px;
     padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 body {
     margin: 0px;
